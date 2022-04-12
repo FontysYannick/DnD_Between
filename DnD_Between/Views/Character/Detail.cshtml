@@ -4,18 +4,12 @@
     ViewData["Title"] = "Detail";
 }
 
-<h1>Detail</h1>
+<h1>Characters</h1>
 
-<div>
+@*<div>
     <h4>CharacterViewModel</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ID)
-        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -83,6 +77,27 @@
             @Html.DisplayFor(model => model.Race)
         </dd>
     </dl>
+</div>*@
+
+<div class="container">
+    <div class="row">
+        <h2>@Model.Name</h2>
+    </div>
+    <div>
+        <section class="row">
+           <div class="col-1">
+                <span>Strength</span>
+                <h3>+2</h3>
+                <div>@Model.Str</div>
+           </div>
+           <h4 class="col-1">@Model.Dex</h4>
+           <h4 class="col-1">@Model.Con</h4>
+           <h4 class="col-1">@Model.Wis</h4>
+           <h4 class="col-1">@Model.Int</h4>
+           <h4 class="col-1">@Model.Cha</h4>
+           <h4 class="col-1">@Model.Cha</h4>
+        </section>   
+    </div>
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |

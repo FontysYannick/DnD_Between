@@ -20,7 +20,7 @@ namespace Logic_DnD.Classes
         public Race char_race { get; private set; }
 
         public Character()
-        { 
+        {
         }
 
         public Character(int id, string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, Class char_class, Race char_race)
