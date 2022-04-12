@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Level</th>
+        <th scope="col">Class</th>
+        <th scope="col">Race</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (CharacterViewModel charViewModel in @Model)
+    {
+        <tr>
+            <th scope="row"><a asp-action="Detail" asp-route-id=@charViewModel.ID>@charViewModel.Name</a></th>
+            <td>@charViewModel.Level</td>
+            <td>@charViewModel.Class</td>
+            <td>@charViewModel.Race</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
