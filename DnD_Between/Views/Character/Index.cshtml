@@ -2,27 +2,36 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Character</h1>
+<div class="row">
+    <h1 class="col-10">Character</h1>
+    <button class="col-2 btn btn-outline-primary"><a asp-action="Create">Create</a></button>
+</div>
 
 <table class="table table-striped">
     <thead>
-    <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Level</th>
-        <th scope="col">Class</th>
-        <th scope="col">Race</th>
-    </tr>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Level</th>
+            <th scope="col">Class</th>
+            <th scope="col">Race</th>
+            <th scope="col"></th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (CharacterViewModel charViewModel in @Model)
-    {
-        <tr>
-            <th scope="row"><a asp-action="Detail" asp-route-id=@charViewModel.ID>@charViewModel.Name</a></th>
-            <td>@charViewModel.Level</td>
-            <td>@charViewModel.Class</td>
-            <td>@charViewModel.Race</td>
-        </tr>
-    }
+        @foreach (CharacterViewModel charViewModel in @Model)
+        {
+            <tr>
+                <th scope="row"><a asp-action="Detail" asp-route-id=@charViewModel.ID>@charViewModel.Name</a></th>
+                <td>@charViewModel.Level</td>
+                <td>@charViewModel.Class</td>
+                <td>@charViewModel.Race</td>
+                <td class="col-2" align="right">
+                    <button class="btn btn-outline-primary"><a asp-action="Detail" asp-route-id=@charViewModel.ID>View</a></button>
+                    <button class="btn btn-outline-primary"><a asp-action="Detail" asp-route-id=@charViewModel.ID>Edit</a></button>
+                    <button class="btn btn-outline-danger"><a asp-action="Detail" asp-route-id=@charViewModel.ID>Delete</a></button>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 

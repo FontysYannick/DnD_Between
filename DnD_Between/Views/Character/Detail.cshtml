@@ -4,14 +4,14 @@
 @{
     ViewData["Title"] = "Detail";
 
-    string ConfigureByTable(int score)
+    int ConfigureByTable(int score)
     {
         int[] tableX1 = { 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 };      //Even scores
         int[] tableX2 = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31 };      //Odd scores
-        string[] tableY = { "-5", "-4", "-3", "-2", "-1", "0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10" };  //Modifier values
+        int[] tableY = { -5, -4, -3, -2, -1, 0, +1, +2, +3, +4, +5, +6, +7, +8, +9, +10 };  //Modifier values
 
         //Ability modifiers are assigned directly from a table.
-        string result = "";
+        int result = 0;
         for (int i = 0; i < tableY.Length; i++)
         {
             if (score == tableX1[i])
@@ -24,6 +24,29 @@
             }
         }
         return result;
+    }
+
+    int ConfigureProf(int level)
+    {
+        int prof = 2;
+        if (level >= 17)
+        {
+            prof = 6;
+        }
+        else if (level >= 13)
+        {
+            prof = 5;
+        }
+        else if (level >= 9)
+        {
+            prof = 4;
+        }
+        else if (level >= 5)
+        {
+            prof = 3;
+        }
+
+        return prof;
     }
 }
 
@@ -42,63 +65,66 @@
     </div>
     <div class="row quick_info">
         <div class="col-1">
-            <div class="border border-danger rounded">
+            <div class="border border-3  border-danger rounded">
                 <span class="ability-summary__label">STRENGTH</span>
                 <h3>@ConfigureByTable(@Model.Str)</h3>
                 <div>@Model.Str</div>
             </div>
         </div>
         <div class="col-1">
-            <div class="border border-danger rounded">
+            <div class="border border-3 border-danger rounded">
                 <span class="ability-summary__label">DEXTERITY</span>
                 <h3>@ConfigureByTable(@Model.Dex)</h3>
                 <div>@Model.Dex</div>
             </div>
         </div>
         <div class="col-1">
-            <div class=" border border-danger rounded">
+            <div class="border border-3 border-danger rounded">
                 <span class="ability-summary__label">CONSTITUTION</span>
                 <h3>@ConfigureByTable(@Model.Con)</h3>
                 <div>@Model.Con</div>
             </div>
         </div>
         <div class="col-1">
-            <div class=" border border-danger rounded">
+            <div class="border border-3 border-danger rounded">
                 <span class="ability-summary__label">INTELLIGENCE</span>
                 <h3>@ConfigureByTable(@Model.Int)</h3>
                 <div>@Model.Int</div>
             </div>
         </div>
         <div class="col-1">
-            <div class=" border border-danger rounded">
+            <div class="border border-3 border-danger rounded">
                 <span class="ability-summary__label">WISDOM</span>
                 <h3>@ConfigureByTable(@Model.Wis)</h3>
                 <div>@Model.Wis</div>
             </div>
         </div>
         <div class="col-1">
-            <div class=" border border-danger rounded">
+            <div class="border border-3 border-danger rounded">
                 <span class="ability-summary__label">CHARISMA</span>
                 <h3>@ConfigureByTable(@Model.Cha)</h3>
                 <div>@Model.Cha</div>
             </div>
         </div>
         <div class="col-1">
-            <div class=" border border-danger rounded">
+            <div class="border border-2 border-danger rounded">
                 <span class="ability-summary__label">PROFICIENCY</span>
-                <h3>+2</h3>
+                <h3>+@ConfigureProf(@Model.Level)</h3>
                 <div>bonus</div>
             </div>
         </div>
         <div class="col-1">
-            <div class=" border border-danger rounded">
+            <div class="border border-2 border-danger rounded">
                 <span class="ability-summary__label">WALKING</span>
                 <h3>@Model.Speed</h3>
                 <div>SPEED</div>
             </div>
         </div>
         <div class="col-1">
-            <h2>INSPO</h2>
+            <div class="border border-2 border-danger rounded">
+                <h2 class="text-white">0</h2>
+            </div>
+             <span class="inspo_label">INSPIRATION</span>
         </div>
         <div class="col-3">
             <h2>HP INFO</h2>

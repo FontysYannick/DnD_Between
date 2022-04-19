@@ -31,5 +31,11 @@ namespace DnD_Between.Controllers
 
             return View(characterViews);
         }
+
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
