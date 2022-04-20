@@ -32,10 +32,27 @@ namespace DnD_Between.Controllers
             return View(characterViews);
         }
 
-
         public IActionResult Create()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Create(CharacterViewModel charview)
+        {
+            if (ModelState.IsValid)
+            {
+                Class clss = new Class(Int32.Parse(charview.Class), "text");
+                Race race = new Race(1, charview.Race);
+                Character character = new Character(0,charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
+                Character_Container characterContainer = new Character_Container();
+                characterContainer.AddCharacter(character);
+
+                return RedirectToAction("Index", "Order");
+            }
+
+            return View();
+        }
+
     }
 }

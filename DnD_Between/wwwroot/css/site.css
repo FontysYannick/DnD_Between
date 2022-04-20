@@ -1,20 +1,20 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 a {
@@ -62,4 +62,14 @@ a {
 
 .inspo_label {
     font-size: 14px;
+}
+
+.level-label {
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.max-width {
+    margin: 0 auto;
+    max-width: 680px;
 }

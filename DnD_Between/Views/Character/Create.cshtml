@@ -5,78 +5,104 @@
 }
 
 <h1>Create</h1>
-
-<h4>CharacterViewModel</h4>
 <hr />
 <div class="row">
-    <div class="col-6">
+    <div class="col-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="row">
-                <div class="form-group col-2">
-                    <label asp-for="Str" class="control-label"></label>
-                    <input asp-for="Str" class="form-control" />
-                    <span asp-validation-for="Str" class="text-danger"></span>
+            <div class="max-width">
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="form-group col-1">
+                        <span class="level-label">Speed</span>
+                        <select>
+                            @for (int i = 20; i <= 50; i += 5)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-1">
+                        <span class="level-label">Level</span>
+                        <select>
+                            @for (int i = 1; i <= 20; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group col-2">
-                    <label asp-for="Dex" class="control-label"></label>
-                    <input asp-for="Dex" class="form-control" />
-                    <span asp-validation-for="Dex" class="text-danger"></span>
+                <div class="row">
+                    <div class="form-group col-2">
+                        <span>Strength</span>
+                        <input asp-for="Str" class="form-control" />
+                        <span asp-validation-for="Str" class="text-danger"></span>
+
+                        @*<label asp-for="Str" class="control-label"></label>
+                            <input asp-for="Str" class="form-control" />
+                            <span asp-validation-for="Str" class="text-danger"></span>*@
+                    </div>
+                    <div class="form-group col-2">
+                        <label asp-for="Dex" class="control-label"></label>
+                        <input asp-for="Dex" class="form-control" />
+                        <span asp-validation-for="Dex" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-2">
+                        <label asp-for="Con" class="control-label"></label>
+                        <input asp-for="Con" class="form-control" />
+                        <span asp-validation-for="Con" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="form-group col-2">
-                    <label asp-for="Con" class="control-label"></label>
-                    <input asp-for="Con" class="form-control" />
-                    <span asp-validation-for="Con" class="text-danger"></span>
+                <div class="row">
+                    <div class="form-group col-2">
+                        <label asp-for="Int" class="control-label"></label>
+                        <input asp-for="Int" class="form-control" />
+                        <span asp-validation-for="Int" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-2">
+                        <label asp-for="Wis" class="control-label"></label>
+                        <input asp-for="Wis" class="form-control" />
+                        <span asp-validation-for="Wis" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-2">
+                        <label asp-for="Cha" class="control-label"></label>
+                        <input asp-for="Cha" class="form-control" />
+                        <span asp-validation-for="Cha" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="form-group col-2">
-                    <label asp-for="Int" class="control-label"></label>
-                    <input asp-for="Int" class="form-control" />
-                    <span asp-validation-for="Int" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="Class" class="control-label"></label>
+                    <input asp-for="Class" class="form-control" />
+                    <span asp-validation-for="Class" class="text-danger"></span>
                 </div>
-                <div class="form-group col-2">
-                    <label asp-for="Wis" class="control-label"></label>
-                    <input asp-for="Wis" class="form-control" />
-                    <span asp-validation-for="Wis" class="text-danger"></span>
+                <div class="form-group col-3">
+                    <span class="level-label">Class</span>
+                    <select>
+                        <option value="1">Barbarian</option>
+                        <option value="2">Bard</option>
+                    </select>
                 </div>
-                <div class="form-group col-2">
-                    <label asp-for="Cha" class="control-label"></label>
-                    <input asp-for="Cha" class="form-control" />
-                    <span asp-validation-for="Cha" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="Race" class="control-label"></label>
+                    <input asp-for="Race" class="form-control" />
+                    <span asp-validation-for="Race" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="Level" class="control-label"></label>
-                <input asp-for="Level" class="form-control" />
-                <span asp-validation-for="Level" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Speed" class="control-label"></label>
-                <input asp-for="Speed" class="form-control" />
-                <span asp-validation-for="Speed" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Class" class="control-label"></label>
-                <input asp-for="Class" class="form-control" />
-                <span asp-validation-for="Class" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Race" class="control-label"></label>
-                <input asp-for="Race" class="form-control" />
-                <span asp-validation-for="Race" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <div class="form-group col-3">
+                    <span class="level-label">Race</span>
+                    <select>
+                        <option value="1">Bugbear</option>
+                        <option value="2">Elf</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
