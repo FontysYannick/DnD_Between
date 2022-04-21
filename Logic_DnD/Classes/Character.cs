@@ -39,31 +39,47 @@ namespace Logic_DnD.Classes
             this.char_race = char_race;
         }
 
-        public void UpdateCharacter(int ID, string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, int class_id, int race_id)
+        public void UpdateCharacter(Character character)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE Character " +
-                "SET [name]         = '" + name + "'," +
-                " [strength]        = '" + str + "'," +
-                " [dexterity]       = '" + dex + "'," +
-                " [constitution]    = '" + con + "'," +
-                " [intelligence]    = '" + intt + "'," +
-                " [wisdom]          = '" + wis + "'," +
-                " [charisma]        = '" + cha + "'," +
-                " [level]           = '" + level + "'," +
-                " [speed]           = '" + speed + "'," +
-                " [class_id]        = '" + class_id + "'," +
-                " [race_id]         = '" + race_id + "'" +
-                "WHERE id           = '" + ID + "'", Connection());
+            string cmd = ("UPDATE Character " +
+                "SET [name]         = (@name)," +
+                " [strength]        = (@str)," +
+                " [dexterity]       = (@dex)," +
+                " [constitution]    = (@con)," +
+                " [intelligence]    = (@int)," +
+                " [wisdom]          = (@wis)," +
+                " [charisma]        = (@cha)," +
+                " [level]           = (@level)," +
+                " [speed]           = (@speed)," +
+                " [class_id]        = (@class_id)," +
+                " [race_id]         = (@race_id)" +
+                "WHERE id           = (@ID)");
 
-            try
+            using (SqlCommand characterCmd = new SqlCommand(cmd, Connection()))
             {
-                Open();
-                cmd.ExecuteNonQuery();
-                Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                characterCmd.Parameters.AddWithValue("@ID", character.ID);
+                characterCmd.Parameters.AddWithValue("@name", character.name);
+                characterCmd.Parameters.AddWithValue("@str", character.str);
+                characterCmd.Parameters.AddWithValue("@dex", character.dex);
+                characterCmd.Parameters.AddWithValue("@con", character.con);
+                characterCmd.Parameters.AddWithValue("@int", character.intt);
+                characterCmd.Parameters.AddWithValue("@wis", character.wis);
+                characterCmd.Parameters.AddWithValue("@cha", character.cha);
+                characterCmd.Parameters.AddWithValue("@level", character.level);
+                characterCmd.Parameters.AddWithValue("@speed", character.speed);
+                characterCmd.Parameters.AddWithValue("@class_id", character.char_class.ID);
+                characterCmd.Parameters.AddWithValue("@race_id", character.char_race.ID);
+
+                try
+                {
+                    Open();
+                    characterCmd.ExecuteScalar();
+                    Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }

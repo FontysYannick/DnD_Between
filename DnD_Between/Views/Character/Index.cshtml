@@ -27,8 +27,8 @@
                 <td class="col-2">@charViewModel.Race</td>
                 <td class="col-3" align="right">
                     <a class="btn btn-outline-primary" asp-action="Detail" asp-route-id=@charViewModel.ID>View</a>
-                    <a class="btn btn-outline-primary" asp-action="Detail" asp-route-id=@charViewModel.ID>Edit</a>
-                    <a class="btn btn-outline-danger" asp-action="Detail" asp-route-id=@charViewModel.ID>Delete</a>
+                    <a class="btn btn-outline-primary" asp-action="Update" asp-route-id=@charViewModel.ID>Edit</a>
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id=@charViewModel.ID>Delete</a>
                 </td>
             </tr>
         }

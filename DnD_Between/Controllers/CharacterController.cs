@@ -24,9 +24,9 @@ namespace DnD_Between.Controllers
         }
 
         [HttpGet]
-        public IActionResult Detail(int id)
+        public IActionResult Detail(int ID)
         {
-            Character characters = Char_Con.Getbyid(id);
+            Character characters = Char_Con.Getbyid(ID);
             CharacterViewModel characterViews = new CharacterViewModel(characters.ID, characters.name, characters.str, characters.dex, characters.con, characters.intt, characters.wis, characters.cha, characters.level, characters.speed, characters.char_class.name, characters.char_race.name);
 
             return View(characterViews);
@@ -42,17 +42,49 @@ namespace DnD_Between.Controllers
         {
             if (ModelState.IsValid)
             {
-                Class clss = new Class(Int32.Parse(charview.Class), "text");
-                Race race = new Race(1, charview.Race);
-                Character character = new Character(0,charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
+                Class clss = new Class(Int32.Parse(charview.Class), "class");
+                Race race = new Race(Int32.Parse(charview.Race), "race");
+                Character character = new Character(0, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
                 Character_Container characterContainer = new Character_Container();
                 characterContainer.AddCharacter(character);
 
-                return RedirectToAction("Index", "Order");
+                return RedirectToAction("Index", "Character");//check if possible to show detail of specific
             }
 
             return View();
         }
 
+        public IActionResult Update(int ID)
+        {
+            Character characters = Char_Con.Getbyid(ID);
+            CharacterViewModel characterViews = new CharacterViewModel(characters.ID, characters.name, characters.str, characters.dex, characters.con, characters.intt, characters.wis, characters.cha, characters.level, characters.speed, characters.char_class.name, characters.char_race.name);
+
+            return View(characterViews);
+        }
+
+        [HttpPost]
+        public IActionResult Update(CharacterViewModel charview)
+        {
+            if (ModelState.IsValid)
+            {
+                Class clss = new Class(Int32.Parse(charview.Class), "class");
+                Race race = new Race(Int32.Parse(charview.Race), "race");
+                Character character = new Character(charview.ID, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
+                character.UpdateCharacter(character);
+
+                return RedirectToAction("Detail", new RouteValueDictionary(
+                        new { controller = "Character", action = "Detail", Id = charview.ID }));
+            }
+
+            return View();
+        }
+
+        public IActionResult Delete(int ID)
+        {
+            Character_Container character_Container = new Character_Container();
+            //gotta make some sort of quistion if sure
+            character_Container.DeleteCharacter(ID);
+            return RedirectToAction("Index", "Character");
+        }
     }
 }
