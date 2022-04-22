@@ -5,7 +5,7 @@ namespace Interface_DnD.Interface
 {
     public interface ICharacter
     {
-        void AddCharacter(CharacterDTO character);
+        int AddCharacter(CharacterDTO character);
 
         void DeleteCharacter(int ID);
 

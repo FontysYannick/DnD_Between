@@ -8,10 +8,11 @@ namespace DAL_DnD.Context
 {
     public class Character_Context : DB, ICharacter
     {
-        public void AddCharacter(CharacterDTO character)
+        public int AddCharacter(CharacterDTO character)
         {
             string sqlCharacter = "INSERT INTO Character ([name],[strength],[dexterity],[constitution],[intelligence],[wisdom],[charisma],[level],[speed],[class_id],[race_id]) " +
-                "VALUES (@name,@str,@dex,@con,@intt,@wis,@cha,@level,@speed,@class_id,@race_id)";
+                "OUTPUT INSERTED.id VALUES (@name,@str,@dex,@con,@intt,@wis,@cha,@level,@speed,@class_id,@race_id)";
+            int ID = 1;
 
             using (SqlCommand characterCmd = new SqlCommand(sqlCharacter, Connection()))
             {
@@ -30,7 +31,7 @@ namespace DAL_DnD.Context
                 try
                 {
                     Open();
-                    characterCmd.ExecuteScalar();
+                    ID = (int)characterCmd.ExecuteScalar();
                     Close();
                 }
                 catch (Exception ex)
@@ -38,6 +39,7 @@ namespace DAL_DnD.Context
                     Console.WriteLine(ex.Message);
                 }
             }
+            return ID;
         }
 
         public void DeleteCharacter(int ID)

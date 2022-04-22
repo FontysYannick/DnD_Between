@@ -9,7 +9,7 @@ namespace Logic_DnD.Container
     {
         Character_Context _Context = new Character_Context();
 
-        public void AddCharacter(Character character)
+        public int AddCharacter(Character character)
         {
             CharacterDTO characterDTO = new CharacterDTO();
             characterDTO.ID = character.ID;
@@ -34,7 +34,7 @@ namespace Logic_DnD.Container
             raceDTO.name = character.char_race.name;
             characterDTO.char_race = raceDTO;
 
-            _Context.AddCharacter(characterDTO);
+            return _Context.AddCharacter(characterDTO);
         }
 
         public void DeleteCharacter(int ID)

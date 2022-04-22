@@ -46,9 +46,9 @@ namespace DnD_Between.Controllers
                 Race race = new Race(Int32.Parse(charview.Race), "race");
                 Character character = new Character(0, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
                 Character_Container characterContainer = new Character_Container();
-                characterContainer.AddCharacter(character);
+                int ID = characterContainer.AddCharacter(character);
 
-                return RedirectToAction("Index", "Character");//check if possible to show detail of specific
+                return RedirectToAction("Detail", new {id = ID });
             }
 
             return View();
@@ -72,8 +72,7 @@ namespace DnD_Between.Controllers
                 Character character = new Character(charview.ID, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
                 character.UpdateCharacter(character);
 
-                return RedirectToAction("Detail", new RouteValueDictionary(
-                        new { controller = "Character", action = "Detail", Id = charview.ID }));
+                return RedirectToAction("Detail", new {id = charview.ID });
             }
 
             return View();
