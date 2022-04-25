@@ -7,6 +7,8 @@ namespace Interface_DnD.Interface
     {
         int AddCharacter(CharacterDTO character);
 
+        void UpdateCharacter(CharacterDTO character);
+
         void DeleteCharacter(int ID);
 
         List<CharacterDTO> Getall();

@@ -42,6 +42,50 @@ namespace DAL_DnD.Context
             return ID;
         }
 
+        public void UpdateCharacter(CharacterDTO character)
+        {
+            string cmd = ("UPDATE Character " +
+                "SET [name]         = (@name)," +
+                " [strength]        = (@str)," +
+                " [dexterity]       = (@dex)," +
+                " [constitution]    = (@con)," +
+                " [intelligence]    = (@int)," +
+                " [wisdom]          = (@wis)," +
+                " [charisma]        = (@cha)," +
+                " [level]           = (@level)," +
+                " [speed]           = (@speed)," +
+                " [class_id]        = (@class_id)," +
+                " [race_id]         = (@race_id)" +
+                "WHERE id           = (@ID)");
+
+            using (SqlCommand characterCmd = new SqlCommand(cmd, Connection()))
+            {
+                characterCmd.Parameters.AddWithValue("@ID", character.ID);
+                characterCmd.Parameters.AddWithValue("@name", character.name);
+                characterCmd.Parameters.AddWithValue("@str", character.str);
+                characterCmd.Parameters.AddWithValue("@dex", character.dex);
+                characterCmd.Parameters.AddWithValue("@con", character.con);
+                characterCmd.Parameters.AddWithValue("@int", character.intt);
+                characterCmd.Parameters.AddWithValue("@wis", character.wis);
+                characterCmd.Parameters.AddWithValue("@cha", character.cha);
+                characterCmd.Parameters.AddWithValue("@level", character.level);
+                characterCmd.Parameters.AddWithValue("@speed", character.speed);
+                characterCmd.Parameters.AddWithValue("@class_id", character.char_class.ID);
+                characterCmd.Parameters.AddWithValue("@race_id", character.char_race.ID);
+
+                try
+                {
+                    Open();
+                    characterCmd.ExecuteScalar();
+                    Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
         public void DeleteCharacter(int ID)
         {
             SqlCommand cmd = new SqlCommand("Delete from Character Where id =" + ID, Connection());

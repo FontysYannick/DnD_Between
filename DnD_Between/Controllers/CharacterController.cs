@@ -1,4 +1,5 @@
-﻿using DnD_Between.Models;
+﻿using DAL_DnD.Context;
+using DnD_Between.Models;
 using Logic_DnD.Classes;
 using Logic_DnD.Container;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,8 @@ namespace DnD_Between.Controllers
 {
     public class CharacterController : Controller
     {
-        Character_Container Char_Con = new Character_Container();
+        Character_Container Char_Con = new Character_Container(new Character_Context());
+        Character Char_ = new Character(new Character_Context());
 
 
         public IActionResult Index()
@@ -26,8 +28,8 @@ namespace DnD_Between.Controllers
         [HttpGet]
         public IActionResult Detail(int ID)
         {
-            Character characters = Char_Con.Getbyid(ID);
-            CharacterViewModel characterViews = new CharacterViewModel(characters.ID, characters.name, characters.str, characters.dex, characters.con, characters.intt, characters.wis, characters.cha, characters.level, characters.speed, characters.char_class.name, characters.char_race.name);
+            Char_ = Char_Con.Getbyid(ID);
+            CharacterViewModel characterViews = new CharacterViewModel(Char_.ID, Char_.name, Char_.str, Char_.dex, Char_.con, Char_.intt, Char_.wis, Char_.cha, Char_.level, Char_.speed, Char_.char_class.name, Char_.char_race.name);
 
             return View(characterViews);
         }
@@ -44,9 +46,8 @@ namespace DnD_Between.Controllers
             {
                 Class clss = new Class(Int32.Parse(charview.Class), "class");
                 Race race = new Race(Int32.Parse(charview.Race), "race");
-                Character character = new Character(0, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
-                Character_Container characterContainer = new Character_Container();
-                int ID = characterContainer.AddCharacter(character);
+                Char_ = new Character(0, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
+                int ID = Char_Con.AddCharacter(Char_);
 
                 return RedirectToAction("Detail", new {id = ID });
             }
@@ -56,8 +57,8 @@ namespace DnD_Between.Controllers
 
         public IActionResult Update(int ID)
         {
-            Character characters = Char_Con.Getbyid(ID);
-            CharacterViewModel characterViews = new CharacterViewModel(characters.ID, characters.name, characters.str, characters.dex, characters.con, characters.intt, characters.wis, characters.cha, characters.level, characters.speed, characters.char_class.name, characters.char_race.name);
+            Char_ = Char_Con.Getbyid(ID);
+            CharacterViewModel characterViews = new CharacterViewModel(Char_.ID, Char_.name, Char_.str, Char_.dex, Char_.con, Char_.intt, Char_.wis, Char_.cha, Char_.level, Char_.speed, Char_.char_class.name, Char_.char_race.name);
 
             return View(characterViews);
         }
@@ -69,8 +70,8 @@ namespace DnD_Between.Controllers
             {
                 Class clss = new Class(Int32.Parse(charview.Class), "class");
                 Race race = new Race(Int32.Parse(charview.Race), "race");
-                Character character = new Character(charview.ID, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
-                character.UpdateCharacter(character);
+                Character pip = new Character(charview.ID, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
+                Char_.UpdateCharacter(pip);
 
                 return RedirectToAction("Detail", new {id = charview.ID });
             }
@@ -80,9 +81,7 @@ namespace DnD_Between.Controllers
 
         public IActionResult Delete(int ID)
         {
-            Character_Container character_Container = new Character_Container();
-            //gotta make some sort of quistion if sure
-            character_Container.DeleteCharacter(ID);
+            Char_Con.DeleteCharacter(ID);
             return RedirectToAction("Index", "Character");
         }
     }

@@ -1,10 +1,10 @@
 ﻿using DAL_DnD;
-using System;
-using System.Data.SqlClient;
+using Interface_DnD.DTO;
+using Interface_DnD.Interface;
 
 namespace Logic_DnD.Classes
 {
-    public class Character : DB
+    public class Character
     {
         public int ID { get; private set; }
         public string name { get; private set; }
@@ -39,48 +39,39 @@ namespace Logic_DnD.Classes
             this.char_race = char_race;
         }
 
+        ICharacter _Context;
+
+        public Character(ICharacter context)
+        {
+            this._Context = context;
+        }
+
         public void UpdateCharacter(Character character)
         {
-            string cmd = ("UPDATE Character " +
-                "SET [name]         = (@name)," +
-                " [strength]        = (@str)," +
-                " [dexterity]       = (@dex)," +
-                " [constitution]    = (@con)," +
-                " [intelligence]    = (@int)," +
-                " [wisdom]          = (@wis)," +
-                " [charisma]        = (@cha)," +
-                " [level]           = (@level)," +
-                " [speed]           = (@speed)," +
-                " [class_id]        = (@class_id)," +
-                " [race_id]         = (@race_id)" +
-                "WHERE id           = (@ID)");
+            CharacterDTO characterDTO = new CharacterDTO();
+            characterDTO.ID = character.ID;
+            characterDTO.name = character.name;
+            characterDTO.str = character.str;
+            characterDTO.dex = character.dex;
+            characterDTO.con = character.con;
+            characterDTO.intt = character.intt;
+            characterDTO.wis = character.wis;
+            characterDTO.cha = character.cha;
+            characterDTO.level = character.level;
+            characterDTO.speed = character.speed;
 
-            using (SqlCommand characterCmd = new SqlCommand(cmd, Connection()))
-            {
-                characterCmd.Parameters.AddWithValue("@ID", character.ID);
-                characterCmd.Parameters.AddWithValue("@name", character.name);
-                characterCmd.Parameters.AddWithValue("@str", character.str);
-                characterCmd.Parameters.AddWithValue("@dex", character.dex);
-                characterCmd.Parameters.AddWithValue("@con", character.con);
-                characterCmd.Parameters.AddWithValue("@int", character.intt);
-                characterCmd.Parameters.AddWithValue("@wis", character.wis);
-                characterCmd.Parameters.AddWithValue("@cha", character.cha);
-                characterCmd.Parameters.AddWithValue("@level", character.level);
-                characterCmd.Parameters.AddWithValue("@speed", character.speed);
-                characterCmd.Parameters.AddWithValue("@class_id", character.char_class.ID);
-                characterCmd.Parameters.AddWithValue("@race_id", character.char_race.ID);
 
-                try
-                {
-                    Open();
-                    characterCmd.ExecuteScalar();
-                    Close();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
+            ClassDTO classDTO = new ClassDTO();
+            classDTO.ID = character.char_class.ID;
+            classDTO.name = character.char_class.name;
+            characterDTO.char_class = classDTO;
+
+            RaceDTO raceDTO = new RaceDTO();
+            raceDTO.ID = character.char_race.ID;
+            raceDTO.name = character.char_race.name;
+            characterDTO.char_race = raceDTO;
+
+            _Context.UpdateCharacter(characterDTO);
         }
     }
 }

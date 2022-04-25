@@ -1,5 +1,6 @@
 ﻿using DAL_DnD.Context;
 using Interface_DnD.DTO;
+using Interface_DnD.Interface;
 using Logic_DnD.Classes;
 using System.Collections.Generic;
 
@@ -7,7 +8,12 @@ namespace Logic_DnD.Container
 {
     public class Character_Container
     {
-        Character_Context _Context = new Character_Context();
+        ICharacter _Context;
+
+        public Character_Container(ICharacter context)
+        {
+            this._Context = context;
+        }
 
         public int AddCharacter(Character character)
         {

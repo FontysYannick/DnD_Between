@@ -40,7 +40,7 @@ a {
     right: 0;
     bottom: 565px;
     left: 0;
-    background-color: rgba(0,0,0,.6);
+    /*background-color: rgba(0,0,0,.6);*/
     z-index: -1;
 }
 

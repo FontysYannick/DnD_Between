@@ -1,4 +1,5 @@
 ﻿using DAL_DnD.Context;
+using Interface_DnD.Interface;
 using Logic_DnD.Classes;
 using System.Collections.Generic;
 
@@ -6,7 +7,12 @@ namespace Logic_DnD.Container
 {
     public class Race_Container
     {
-        Race_Context _Context = new Race_Context();
+        IRace _Context;
+
+        public Race_Container(IRace context)
+        {
+            this._Context = context;
+        }
 
         public List<Race> Getall()
         {
