@@ -7,7 +7,7 @@ namespace DnD_Between.Models
         public int ID { get; set; }
         [Required, MaxLength(50)]
         public string Name { get; set; }
-        [Required, Range(0,30)]
+        [Range(0,30)]
         public int Str { get; set; }
         [Required, Range(0, 30)]
         public int Dex { get; set; }
