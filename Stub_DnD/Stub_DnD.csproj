@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stub\CharacterStub.cs" />
+    <Compile Include="Stub\ClassStub.cs" />
+    <Compile Include="Stub\RaceStub.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Interface_DnD\Interface_DnD.csproj">

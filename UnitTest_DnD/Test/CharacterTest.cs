@@ -66,7 +66,7 @@ namespace UnitTest_DnD.Test
             characterContainer.Getall();
 
             // Assert
-            Assert.AreEqual(4, characterStub.Characterlist.Count);
+            Assert.AreEqual(4, characterContainer.Getall().Count);
         }
 
         [TestMethod]
