@@ -79,6 +79,20 @@ a {
     justify-content: center;
 }
 
+.row_1 {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x) * -.5);
+    margin-left: calc(var(--bs-gutter-x) * -.5);
+}
+
+.margin_bot {
+    margin-bottom: 5px;
+}
+
 .subsections {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -90,6 +104,7 @@ a {
 .saving-throws {
     grid-area: 1 / 1 / 3 / 4;
     text-align: center;
+    margin-block: 20px;
 }
 
 .sences {
@@ -119,4 +134,40 @@ a {
 
 .div8 {
     grid-area: 1 / 9 / 2 / 13;
+}
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+    .active, .collapsible:hover {
+        background-color: #555;
+    }
+
+    .collapsible:after {
+        content: '\002B';
+        color: white;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+
+.active:after {
+    content: "\2212";
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
 }

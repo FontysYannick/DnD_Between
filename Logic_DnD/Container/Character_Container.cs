@@ -43,6 +43,34 @@ namespace Logic_DnD.Container
             return _Context.AddCharacter(characterDTO);
         }
 
+        public void UpdateCharacter(Character character)
+        {
+            CharacterDTO characterDTO = new CharacterDTO();
+            characterDTO.ID = character.ID;
+            characterDTO.name = character.name;
+            characterDTO.str = character.str;
+            characterDTO.dex = character.dex;
+            characterDTO.con = character.con;
+            characterDTO.intt = character.intt;
+            characterDTO.wis = character.wis;
+            characterDTO.cha = character.cha;
+            characterDTO.level = character.level;
+            characterDTO.speed = character.speed;
+
+
+            ClassDTO classDTO = new ClassDTO();
+            classDTO.ID = character.char_class.ID;
+            classDTO.name = character.char_class.name;
+            characterDTO.char_class = classDTO;
+
+            RaceDTO raceDTO = new RaceDTO();
+            raceDTO.ID = character.char_race.ID;
+            raceDTO.name = character.char_race.name;
+            characterDTO.char_race = raceDTO;
+
+            _Context.UpdateCharacter(characterDTO);
+        }
+
         public void DeleteCharacter(int ID)
         {
             _Context.DeleteCharacter(ID);

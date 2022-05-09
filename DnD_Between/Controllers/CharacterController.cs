@@ -71,7 +71,7 @@ namespace DnD_Between.Controllers
                 Class clss = new Class(Int32.Parse(charview.Class), "class");
                 Race race = new Race(Int32.Parse(charview.Race), "race");
                 Character pip = new Character(charview.ID, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
-                Char_.UpdateCharacter(pip);
+                Char_Con.UpdateCharacter(pip);
 
                 return RedirectToAction("Detail", new {id = charview.ID });
             }

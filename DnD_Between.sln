@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface_DnD", "Interface_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic_DnD", "Logic_DnD\Logic_DnD.csproj", "{FE4A00F5-27FA-4787-A9D2-85E4C3152BBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest_DnD", "UnitTest_DnD\UnitTest_DnD.csproj", "{F425E18E-9CFB-4559-B37A-B74529ABFF87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stub_DnD", "Stub_DnD\Stub_DnD.csproj", "{F93A4844-85DF-4133-A592-E35139EC506C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{FE4A00F5-27FA-4787-A9D2-85E4C3152BBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE4A00F5-27FA-4787-A9D2-85E4C3152BBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE4A00F5-27FA-4787-A9D2-85E4C3152BBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F425E18E-9CFB-4559-B37A-B74529ABFF87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F425E18E-9CFB-4559-B37A-B74529ABFF87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F425E18E-9CFB-4559-B37A-B74529ABFF87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F425E18E-9CFB-4559-B37A-B74529ABFF87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F93A4844-85DF-4133-A592-E35139EC506C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F93A4844-85DF-4133-A592-E35139EC506C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F93A4844-85DF-4133-A592-E35139EC506C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F93A4844-85DF-4133-A592-E35139EC506C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
