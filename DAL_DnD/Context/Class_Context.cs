@@ -30,6 +30,7 @@ namespace DAL_DnD.Context
                         {
                             ID = reader.GetInt32(0),
                             name = reader.GetString(1),
+                            description = reader.GetString(2),
 
                         };
                         ClassDTOList.Add(items);

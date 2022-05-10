@@ -20,7 +20,7 @@ namespace Logic_DnD.Container
 
             foreach (var item in _Context.Getall())
             {
-                list.Add(new Class(item.ID, item.name));
+                list.Add(new Class(item.ID, item.name, item.description));
             }
 
             return list;

@@ -9,8 +9,7 @@ namespace DnD_Between.Controllers
     public class CharacterController : Controller
     {
         Character_Container Char_Con = new Character_Container(new Character_Context());
-        Character Char_ = new Character(new Character_Context());
-
+        Character Char_ = new Character();
 
         public IActionResult Index()
         {

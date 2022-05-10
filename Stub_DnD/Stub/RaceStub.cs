@@ -13,8 +13,8 @@ namespace Stub_DnD.Stub
         {
             this.RaceList = new List<RaceDTO>()
             {
-                new RaceDTO{ID = 1, name = "Barb" },
-                new RaceDTO{ID = 2, name = "Bard" },
+                new RaceDTO{ID = 1, name = "Elf" },
+                new RaceDTO{ID = 2, name = "Bugbear" },
             };
         }
 
