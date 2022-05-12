@@ -47,9 +47,11 @@
     <Compile Include="DTO\CharacterDTO.cs" />
     <Compile Include="DTO\ClassDTO.cs" />
     <Compile Include="DTO\RaceDTO.cs" />
+    <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Interface\ICharacter.cs" />
     <Compile Include="Interface\IClass.cs" />
     <Compile Include="Interface\IRace.cs" />
+    <Compile Include="Interface\IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

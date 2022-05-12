@@ -91,7 +91,7 @@ namespace DAL_DnD.Context
 
                         if (inUse >= 1)
                         {
-                            throw new Exception("Email is already in use");
+                            throw new Exception("Username is already in use");
                         }
 
                         // Hash the password

@@ -47,9 +47,11 @@
     <Compile Include="Classes\Character.cs" />
     <Compile Include="Classes\Class.cs" />
     <Compile Include="Classes\Race.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="Container\Character_Container.cs" />
     <Compile Include="Container\Class_Container.cs" />
     <Compile Include="Container\Race_Container.cs" />
+    <Compile Include="Container\User_Container.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
