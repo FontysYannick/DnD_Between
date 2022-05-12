@@ -10,13 +10,14 @@ namespace DAL_DnD.Context
     {
         public int AddCharacter(CharacterDTO character)
         {
-            string sqlCharacter = "INSERT INTO Character ([name],[strength],[dexterity],[constitution],[intelligence],[wisdom],[charisma],[level],[speed],[class_id],[race_id]) " +
-                "OUTPUT INSERTED.id VALUES (@name,@str,@dex,@con,@intt,@wis,@cha,@level,@speed,@class_id,@race_id)";
+            string sqlCharacter = "INSERT INTO Character ([name], [User_ID],[strength],[dexterity],[constitution],[intelligence],[wisdom],[charisma],[level],[speed],[class_id],[race_id]) " +
+                "OUTPUT INSERTED.id VALUES (@name, @User_ID,@str,@dex,@con,@intt,@wis,@cha,@level,@speed,@class_id,@race_id)";
             int ID = 1;
 
             using (SqlCommand characterCmd = new SqlCommand(sqlCharacter, Connection()))
             {
                 characterCmd.Parameters.AddWithValue("@name", character.name);
+                characterCmd.Parameters.AddWithValue("@User_ID", 1);
                 characterCmd.Parameters.AddWithValue("@str", character.str);
                 characterCmd.Parameters.AddWithValue("@dex", character.dex);
                 characterCmd.Parameters.AddWithValue("@con", character.con);
