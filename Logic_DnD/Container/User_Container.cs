@@ -17,18 +17,18 @@ namespace Logic_DnD.Container
             this._IUser = user;
         }
 
-        public User attemptLogin(string username, string password)
+        public User attemptLogin(User user)
         {
-            UserDTO userDTO = new UserDTO() { Id = 0, Username = username, Password = password };
+            UserDTO userDTO = new UserDTO() { Id = 0, Username = user.Username, Password = user.Password };
             UserDTO DTO = _IUser.AttemptLogin(userDTO);
-            User user = new User(DTO.Id, DTO.Username, DTO.Password);
+            User user1 = new User(DTO.Id, DTO.Username, DTO.Password);
 
-            return user;
+            return user1;
         }
 
-        public bool register(string username, string password)
+        public bool register(User user)
         {
-            UserDTO userDTO = new UserDTO() {Id = 0, Username =  username, Password = password};
+            UserDTO userDTO = new UserDTO() {Id = 0, Username =  user.Username, Password = user.Password};
             return _IUser.Register(userDTO);
         }
     }

@@ -26,11 +26,24 @@
                             <a class="nav-link text-white" asp-area="" asp-controller="Class" asp-action="Index">Classes</a>
                         </li>
                     </ul>
-                    <ul class="nav justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Character" asp-action="Index">Login</a>
-                        </li>
-                    </ul>
+                    @{
+                        if (Context.Session.GetString("ID") != null)
+                        {
+                            <ul class="nav justify-content-end">
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="LogOut">Logout</a>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="nav justify-content-end">
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="Index">Login</a>
+                                </li>
+                            </ul>
+                        }
+                    }
                 </div>
             </div>
         </nav>

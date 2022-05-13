@@ -40,7 +40,7 @@ namespace UnitTest_DnD.Test
             characterContainer.AddCharacter(character);
 
             // Assert
-            Assert.AreNotEqual(character.name, "Name Is Not Wrong");
+            Assert.AreEqual(character.name, "Name Is Wrong");
         }
 
         [TestMethod]

@@ -6,6 +6,11 @@
         public string name { get; private set; }
         public string description { get; private set; }
 
+        public Class(int ID)
+        { 
+            this.ID = ID;
+        }
+
         public Class(int id, string name)
         {
             this.ID = id;

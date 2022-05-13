@@ -38,12 +38,5 @@ namespace Logic_DnD.Classes
             this.char_class = char_class;
             this.char_race = char_race;
         }
-
-        ICharacter _Context;
-
-        public Character(ICharacter context)
-        {
-            this._Context = context;
-        }
     }
 }

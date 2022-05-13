@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace DAL_DnD.Context
 {
-    internal class User_Context : DB, IUser
+    public class User_Context : DB, IUser
     {
         public UserDTO AttemptLogin(UserDTO userDTO)
         {
             UserDTO user = new UserDTO();
 
-            string username = userDTO.Username.ToLower().Trim();
-            string password = userDTO.Password.Trim();
+            string username = userDTO.Username;
+            string password = userDTO.Password;
             bool verified = false;
 
             string query = "SELECT * FROM [User] WHERE Username = (@Username)";
