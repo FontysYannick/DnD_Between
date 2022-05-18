@@ -12,6 +12,7 @@ namespace Interface_DnD.Interface
         void DeleteCharacter(int ID);
 
         List<CharacterDTO> Getall();
+        List<CharacterDTO> Getbyuser(int ID);
 
         CharacterDTO Getbyid(int ID);
     }

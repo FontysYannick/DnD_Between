@@ -17,7 +17,7 @@ namespace DAL_DnD.Context
             using (SqlCommand characterCmd = new SqlCommand(sqlCharacter, Connection()))
             {
                 characterCmd.Parameters.AddWithValue("@name", character.name);
-                characterCmd.Parameters.AddWithValue("@User_ID", 1);
+                characterCmd.Parameters.AddWithValue("@User_ID", character.user_id);
                 characterCmd.Parameters.AddWithValue("@str", character.str);
                 characterCmd.Parameters.AddWithValue("@dex", character.dex);
                 characterCmd.Parameters.AddWithValue("@con", character.con);
@@ -112,6 +112,58 @@ namespace DAL_DnD.Context
 
             string query = "SELECT Character.*, Class.class, Race.race FROM Character JOIN Class on Character.class_id = Class.Id JOIN Race on Character.race_id = Race.id WHERE Character.User_ID = 1";
             SqlCommand commandDatabase = new SqlCommand(query, Connection());
+            commandDatabase.CommandTimeout = 60;
+            SqlDataReader reader;
+
+            try
+            {
+                Open();
+                reader = commandDatabase.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        var items = new CharacterDTO()
+                        {
+                            ID = reader.GetInt32(0),
+                            name = reader.GetString(2),
+                            str = reader.GetInt32(3),
+                            dex = reader.GetInt32(4),
+                            con = reader.GetInt32(5),
+                            intt = reader.GetInt32(6),
+                            wis = reader.GetInt32(7),
+                            cha = reader.GetInt32(8),
+                            level = reader.GetInt32(9),
+                            speed = reader.GetInt32(10),
+                            char_class = new ClassDTO() { ID = reader.GetInt32(11), name = reader.GetString(13) },
+                            char_race = new RaceDTO() { ID = reader.GetInt32(12), name = reader.GetString(14) }
+                        };
+                        CharacterDTOList.Add(items);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+                Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return CharacterDTOList;
+        }
+
+        public List<CharacterDTO> Getbyuser(int ID)
+        {
+            List<CharacterDTO> CharacterDTOList = new List<CharacterDTO>();
+
+            string query = "SELECT Character.*, Class.class, Race.race FROM Character JOIN Class on Character.class_id = Class.Id JOIN Race on Character.race_id = Race.id WHERE Character.User_ID = (@ID)";
+            SqlCommand commandDatabase = new SqlCommand(query, Connection());
+            commandDatabase.Parameters.AddWithValue("@ID", ID);
+
             commandDatabase.CommandTimeout = 60;
             SqlDataReader reader;
 

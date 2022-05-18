@@ -17,14 +17,17 @@ namespace UnitTest_DnD.Test
             // Arrange
             Class char_class = new Class(1, "barb");
             Race char_race = new Race(1, "elf");
-            Character character = new Character(5, "bob", 8,8,8,8,8,8,14,30,char_class,char_race);
+            Character character = new Character(5, "bob", 8, 8, 8, 8, 8, 8, 14, 30,char_class,char_race);
             Character_Container characterContainer = new Character_Container(characterStub);
 
             // Act
             characterContainer.AddCharacter(character);
 
             // Assert
-            Assert.AreEqual(character.ID, characterStub.Characterlist[characterStub.Characterlist.Count - 1].ID);
+            Assert.AreEqual(5, characterContainer.Getbyid(5).ID);
+            Assert.AreEqual("bob", characterContainer.Getbyid(5).name);
+            Assert.AreEqual(1, characterContainer.Getbyid(5).char_race.ID);
+            Assert.AreEqual("barb", characterContainer.Getbyid(5).char_class.name);
         }
 
         [TestMethod]
@@ -40,7 +43,7 @@ namespace UnitTest_DnD.Test
             characterContainer.AddCharacter(character);
 
             // Assert
-            Assert.AreEqual(character.name, "Name Is Wrong");
+            Assert.AreEqual("Name Is Wrong", characterContainer.Getbyid(5).name);
         }
 
         [TestMethod]

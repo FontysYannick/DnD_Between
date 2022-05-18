@@ -13,15 +13,25 @@ namespace DnD_Between.Controllers
 
         public IActionResult Index()
         {
-            List<CharacterViewModel> characterViews = new List<CharacterViewModel>();
-            List<Character> characters = Char_Con.Getall();
 
-            foreach (Character item in characters)
+            string? session_ID = HttpContext.Session.GetString("ID");
+            List<CharacterViewModel> characterViews = new List<CharacterViewModel>();
+
+
+            if (session_ID != null)
             {
-                characterViews.Add(new CharacterViewModel(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, item.char_class.name, item.char_race.name));
+                int myValue = Convert.ToInt32(session_ID);
+                List<Character> characters = Char_Con.Getbyuser(myValue);
+
+                foreach (Character item in characters)
+                {
+                    characterViews.Add(new CharacterViewModel(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, item.char_class.name, item.char_race.name));
+                }
+
+                return View(characterViews);
             }
 
-            return View(characterViews);
+            return RedirectToAction("Index", "User");
         }
 
         [HttpGet]
@@ -45,7 +55,7 @@ namespace DnD_Between.Controllers
             {
                 Class clss = new Class(Int32.Parse(charview.Class), "class");
                 Race race = new Race(Int32.Parse(charview.Race), "race");
-                Char_ = new Character(0, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
+                Char_ = new Character(0, Convert.ToInt32(HttpContext.Session.GetString("ID")),charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
                 int ID = Char_Con.AddCharacter(Char_);
 
                 return RedirectToAction("Detail", new {id = ID });

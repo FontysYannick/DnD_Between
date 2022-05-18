@@ -19,6 +19,7 @@ namespace Logic_DnD.Container
         {
             CharacterDTO characterDTO = new CharacterDTO();
             characterDTO.ID = character.ID;
+            characterDTO.user_id = character.user_id;
             characterDTO.name = character.name;
             characterDTO.str = character.str;
             characterDTO.dex = character.dex;
@@ -81,6 +82,18 @@ namespace Logic_DnD.Container
             List<Character> list_Character = new List<Character>();
 
             foreach (var item in _Context.Getall())
+            {
+                list_Character.Add(new Character(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, new Class(item.char_class.ID, item.char_class.name), new Race(item.char_race.ID, item.char_race.name)));
+            }
+
+            return list_Character;
+        }
+
+        public List<Character> Getbyuser(int ID)
+        {
+            List<Character> list_Character = new List<Character>();
+
+            foreach (var item in _Context.Getbyuser(ID))
             {
                 list_Character.Add(new Character(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, new Class(item.char_class.ID, item.char_class.name), new Race(item.char_race.ID, item.char_race.name)));
             }

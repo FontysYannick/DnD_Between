@@ -3,6 +3,7 @@
     public class CharacterDTO
     {
         public int ID { get; set; }
+        public int user_id { get; set; }
         public string name { get; set; }
         public int str { get; set; }
         public int dex { get; set; }
