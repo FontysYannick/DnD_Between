@@ -11,12 +11,6 @@
             this.ID = ID;
         }
 
-        public Class(int id, string name)
-        {
-            this.ID = id;
-            this.name = name;
-        }
-
         public Class(int id, string name, string description)
         {
             this.ID = id;

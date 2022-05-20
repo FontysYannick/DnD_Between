@@ -53,8 +53,8 @@ namespace DnD_Between.Controllers
         {
             if (ModelState.IsValid)
             {
-                Class clss = new Class(Int32.Parse(charview.Class), "class");
-                Race race = new Race(Int32.Parse(charview.Race), "race");
+                Class clss = new Class(Int32.Parse(charview.Class));
+                Race race = new Race(Int32.Parse(charview.Race));
                 Char_ = new Character(0, Convert.ToInt32(HttpContext.Session.GetString("ID")),charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
                 int ID = Char_Con.AddCharacter(Char_);
 
@@ -77,9 +77,9 @@ namespace DnD_Between.Controllers
         {
             if (ModelState.IsValid)
             {
-                Class clss = new Class(Int32.Parse(charview.Class), "class");
-                Race race = new Race(Int32.Parse(charview.Race), "race");
-                Character pip = new Character(charview.ID, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
+                Class clss = new Class(Int32.Parse(charview.Class));
+                Race race = new Race(Int32.Parse(charview.Race));
+                Character pip = new Character(charview.ID, Convert.ToInt32(HttpContext.Session.GetString("ID")), charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
                 Char_Con.UpdateCharacter(pip);
 
                 return RedirectToAction("Detail", new {id = charview.ID });

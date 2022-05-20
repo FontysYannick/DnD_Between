@@ -46,11 +46,9 @@ namespace DAL_DnD.Context
                                     Password = reader.GetString(2),
                                 };
 
-                                Close();
                             }
                             else
                             {
-                                Close();
                                 throw new Exception("Incorrect credentials");
                             }
                         }
@@ -59,6 +57,10 @@ namespace DAL_DnD.Context
                 catch
                 {
                     Console.Write("Connection Error", "Information");
+                }
+                finally
+                {
+                    Close();
                 }
             }
             return user;
@@ -109,11 +111,14 @@ namespace DAL_DnD.Context
                                 Open();
                                 command.ExecuteScalar();
                                 command.Dispose();
-                                Close();
                             }
                             catch
                             {
                                 throw new Exception("Couldn't register user");
+                            }
+                            finally
+                            {
+                                Close();
                             }
                         }
                     }
@@ -126,6 +131,10 @@ namespace DAL_DnD.Context
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                Close();
             }
             return true;
         }

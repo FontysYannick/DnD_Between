@@ -53,8 +53,8 @@ namespace UnitTest_DnD.Test
             Race character_race = new Race(2);
             Character _character = new Character(5, 2, "Name Is Wrong", 10, 10, 10, 10, 10, 10, 7, 30, character_class, character_race);
 
-            Class char_class = new Class(1, "barb");
-            Race char_race = new Race(1, "elf");
+            Class char_class = new Class(1);
+            Race char_race = new Race(1);
             Character character = new Character(5, 2, "Testing", 8, 8, 8, 8, 8, 8, 14, 30, char_class, char_race);
             Character_Container characterContainer = new Character_Container(characterStub);
 

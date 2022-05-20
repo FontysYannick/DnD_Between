@@ -37,10 +37,11 @@ namespace Logic_DnD.Container
         public List<Character> Getall()
         {
             List<Character> list_Character = new List<Character>();
+            Character character = new Character();
 
-            foreach (var item in _Context.Getall())
+            foreach (CharacterDTO item in _Context.Getall())
             {
-                list_Character.Add(new Character(item.ID, item.user_id, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, new Class(item.char_class.ID, item.char_class.name), new Race(item.char_race.ID, item.char_race.name)));
+                list_Character.Add(character.FromDTO(item));
             }
 
             return list_Character;
@@ -49,10 +50,12 @@ namespace Logic_DnD.Container
         public List<Character> Getbyuser(int ID)
         {
             List<Character> list_Character = new List<Character>();
+            Character character = new Character();
+
 
             foreach (var item in _Context.Getbyuser(ID))
             {
-                list_Character.Add(new Character(item.ID, item.user_id, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, new Class(item.char_class.ID, item.char_class.name), new Race(item.char_race.ID, item.char_race.name)));
+                list_Character.Add(character.FromDTO(item));
             }
 
             return list_Character;
@@ -61,9 +64,9 @@ namespace Logic_DnD.Container
         public Character Getbyid(int ID)
         {
             CharacterDTO DTO = _Context.Getbyid(ID);
-            Character list_Character = new Character(DTO.ID, DTO.user_id, DTO.name, DTO.str, DTO.dex, DTO.con, DTO.intt, DTO.wis, DTO.cha, DTO.level, DTO.speed, new Class(DTO.char_class.ID, DTO.char_class.name), new Race(DTO.char_race.ID, DTO.char_race.name));
+            Character character = new Character();
 
-            return list_Character;
+            return character.FromDTO(DTO);
         }
     }
 }

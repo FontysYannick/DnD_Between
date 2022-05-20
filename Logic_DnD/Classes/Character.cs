@@ -41,23 +41,6 @@ namespace Logic_DnD.Classes
             this.char_race = char_race;
         }
 
-        public Character(int id, string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, Class char_class, Race char_race)
-        {
-            this.ID = id;
-            this.name = name;
-            this.str = str;
-            this.dex = dex;
-            this.con = con;
-            this.intt = intt;
-            this.wis = wis;
-            this.cha = cha;
-            this.level = level;
-            this.speed = speed;
-            this.char_class = char_class;
-            this.char_race = char_race;
-        }
-
-
         public CharacterDTO ToDTO(Character character)
         {
             CharacterDTO characterDTO = new CharacterDTO();
@@ -73,17 +56,31 @@ namespace Logic_DnD.Classes
             characterDTO.level = character.level;
             characterDTO.speed = character.speed;
 
-            ClassDTO classDTO = new ClassDTO();
-            classDTO.ID = character.char_class.ID;
-            classDTO.name = character.char_class.name;
-            characterDTO.char_class = classDTO;
-
-            RaceDTO raceDTO = new RaceDTO();
-            raceDTO.ID = character.char_race.ID;
-            raceDTO.name = character.char_race.name;
-            characterDTO.char_race = raceDTO;
+            characterDTO.char_class = new ClassDTO() { ID = character.char_class.ID };
+            characterDTO.char_race = new RaceDTO() { ID = character.char_race.ID };
 
             return characterDTO;
+        }
+
+        public Character FromDTO(CharacterDTO characterDTO)
+        {
+            Character character = new Character();
+            character.ID = characterDTO.ID;
+            character.user_id = characterDTO.user_id;
+            character.name = characterDTO.name;
+            character.str = characterDTO.str;
+            character.dex = characterDTO.dex;
+            character.con = characterDTO.con;
+            character.intt = characterDTO.intt;
+            character.wis = characterDTO.wis;
+            character.cha = characterDTO.cha;
+            character.level = characterDTO.level;
+            character.speed = characterDTO.speed;
+
+            character.char_class = new Class(characterDTO.char_class.ID, characterDTO.char_class.name, characterDTO.char_class.description);
+            character.char_race = new Race(characterDTO.char_race.ID, characterDTO.char_race.name);
+
+            return character;
         }
     }
 }

@@ -81,11 +81,14 @@ namespace DAL_DnD.Context
                 {
                     Open();
                     characterCmd.ExecuteScalar();
-                    Close();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    Close();
                 }
             }
         }
@@ -98,11 +101,14 @@ namespace DAL_DnD.Context
             {
                 Open();
                 cmd.ExecuteNonQuery();
-                Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Close();
             }
         }
 
@@ -146,11 +152,14 @@ namespace DAL_DnD.Context
                 {
                     Console.WriteLine("No rows found.");
                 }
-                Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Close();
             }
 
             return CharacterDTOList;
@@ -198,11 +207,14 @@ namespace DAL_DnD.Context
                 {
                     Console.WriteLine("No rows found.");
                 }
-                Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Close();
             }
 
             return CharacterDTOList;
@@ -247,12 +259,14 @@ namespace DAL_DnD.Context
                 {
                     Console.WriteLine("No rows found.");
                 }
-
-                Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Close();
             }
 
             return CharacterDto;

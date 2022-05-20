@@ -39,11 +39,14 @@ namespace DAL_DnD.Context
                 {
                     Console.WriteLine("No rows found.");
                 }
-                Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Close();
             }
 
             return RaceDTOlist;
