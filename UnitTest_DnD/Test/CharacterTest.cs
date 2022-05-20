@@ -109,6 +109,7 @@ namespace UnitTest_DnD.Test
 
             // Assert
             Assert.AreEqual(1, characterContainer.Getbyid(1).ID);
+            Assert.AreEqual("Billy", characterContainer.Getbyid(1).name);
         }
 
         [TestMethod]
@@ -122,6 +123,9 @@ namespace UnitTest_DnD.Test
 
             // Assert
             Assert.AreEqual(3, characterContainer.Getbyuser(1).Count);
+            Assert.AreEqual(1, characterContainer.Getbyuser(1)[0].ID);
+            Assert.AreEqual(3, characterContainer.Getbyuser(1)[1].ID);
+            Assert.AreEqual(4, characterContainer.Getbyuser(1)[2].ID);
         }
     }
 }

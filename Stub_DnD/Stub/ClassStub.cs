@@ -13,8 +13,8 @@ namespace Stub_DnD.Stub
         {
             this.ClassList = new List<ClassDTO>()
             {
-                new ClassDTO{ID = 1, name = "Barb" },
-                new ClassDTO{ID = 2, name = "Bard" },
+                new ClassDTO{ID = 1, name = "Barb", description = "Barb go brr" },
+                new ClassDTO{ID = 2, name = "Bard", description = "Bard go pling you are charmed" },
             };
         }
 

@@ -45,6 +45,7 @@
     <Compile Include="Stub\CharacterStub.cs" />
     <Compile Include="Stub\ClassStub.cs" />
     <Compile Include="Stub\RaceStub.cs" />
+    <Compile Include="Stub\UserStub.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Interface_DnD\Interface_DnD.csproj">
