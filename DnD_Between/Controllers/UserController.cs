@@ -13,6 +13,12 @@ namespace DnD_Between.Controllers
         {
             if (HttpContext.Session.GetString("Id") == null)
             {
+                string username = HttpContext.Request.Query["Username"];
+
+                if (username != null)
+                {
+                    return View(new UserViewModel() { Username = username });
+                }
                 return View();
             }
             else
@@ -66,6 +72,7 @@ namespace DnD_Between.Controllers
                 if (register != null)
                 {
                     TempData["data"] = register;
+                    return RedirectToAction("Index", "User", user.Username);
                 }
                 else
                 {

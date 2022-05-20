@@ -78,11 +78,11 @@ namespace UnitTest_DnD.Test
             Character_Container characterContainer = new Character_Container(characterStub);
 
             // Act
-            characterContainer.DeleteCharacter(1);
+            characterContainer.DeleteCharacter(2);
 
             // Assert
             Assert.AreEqual(3, characterStub.Characterlist.Count);
-            Assert.ThrowsException<NullReferenceException>(() => characterContainer.Getbyid(1).ID);
+            Assert.ThrowsException<NullReferenceException>(() => characterContainer.Getbyid(2).ID);
         }
 
         [TestMethod]

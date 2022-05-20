@@ -31,7 +31,9 @@ namespace DnD_Between.Controllers
                 return View(characterViews);
             }
 
-            return RedirectToAction("Index", "User");
+            return View(characterViews);
+
+            //return RedirectToAction("Index", "User");
         }
 
         [HttpGet]

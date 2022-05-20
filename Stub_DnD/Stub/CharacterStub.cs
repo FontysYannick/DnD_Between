@@ -31,12 +31,15 @@ namespace Stub_DnD.Stub
 
         public void DeleteCharacter(int ID)
         {
-            for (var i = 0; i < Characterlist.Count; i++)
+            int i = 0;
+            while (i < Characterlist.Count && Characterlist[i].ID != ID)
             {
-                if (Characterlist[i].ID == ID)
-                {
-                    Characterlist.Remove(Characterlist[i]);
-                }
+                i++;
+            }
+
+            if (i != Characterlist.Count)
+            {
+                Characterlist.Remove(Characterlist[i]);
             }
         }
 
@@ -47,14 +50,19 @@ namespace Stub_DnD.Stub
 
         public CharacterDTO Getbyid(int ID)
         {
-            for (var i = 0; i < Characterlist.Count; i++)
+            CharacterDTO D = default;
+
+            int i = 0;
+            while (i < Characterlist.Count && Characterlist[i].ID != ID)
             {
-                if (Characterlist[i].ID == ID)
-                {
-                    return (Characterlist[i]);
-                }
+                i++;
             }
-            return default;
+
+            if (i != Characterlist.Count)
+            {
+                D = Characterlist[i];
+            }
+            return D;
         }
 
         public void UpdateCharacter(CharacterDTO character)
