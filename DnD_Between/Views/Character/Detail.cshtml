@@ -126,10 +126,26 @@
             <span class="inspo_label">INSPIRATION</span>
         </div>
         <div class="col-3">
-            <h2>HP INFO</h2>
+            <div class="border border-2 border-danger rounded row">
+                <div class="col-4">
+                    <H6 class="mt-1">HEAL</H6>
+                    <H6> - - </H6>
+                    <H6>DAMAGE</H6>
+                </div>
+                <div class="col-4">
+                    <H6 class="mt-1">CURRENT</H6>
+                    @{
+                        int HP = (@Model.Level * 5) + @Model.Con + 10;
+                    }
+                    <H5>@HP / @HP</H5>
+                </div>
+                <div class="col-4">
+                    <H6 class="mt-1">TEMP</H6>
+                    <div> - - </div>
+                </div>
+            </div>
         </div>
     </div>
-    <br />
 
     <div class="subsections">
         <div class="saving-throws">
@@ -192,7 +208,7 @@
             </div>
         </div>
         <div class="sences">
-            <div class="border border-3 border-dark rounded">
+            <div class="border border-3 border-dark rounded H-16">
                 <div class="row margin_bot mt-2">
                     <div class="col-1"></div>
                     <div class="border border-3 border-dark rounded col-2">
@@ -232,8 +248,13 @@
                 <span>Sences</span>
             </div>
         </div>
-        <div class="div3"> </div>
-        <div class="div4"> </div>
+        <div class="proficiencies">
+            <div class="border border-3 border-dark H-16">
+            </div>
+        </div>
+        <div class="skills">
+
+        </div>
         <div class="div5"> </div>
         <div class="div6"> </div>
         <div class="div7"> </div>

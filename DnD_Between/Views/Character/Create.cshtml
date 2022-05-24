@@ -21,14 +21,14 @@
                         <div class="Card-body">
                             <div class="row">
                                 <div class="col-2"></div>
-                                <div class="form-group col-5">
+                                <div class="form-group col-4">
                                     <label asp-for="Name" class="control-label"></label>
                                     <input asp-for="Name" class="form-control" />
                                     <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
                                 <div class="form-group col-4">
                                     <span class="level-label">Class</span>
-                                    <select asp-for="Class" autofocus>
+                                    <select asp-for="Class" class="form-select" autofocus>
                                         <option value="1">Barbarian</option>
                                         <option value="2">Bard</option>
                                     </select>
@@ -52,15 +52,15 @@
                                 <div class="col-2"></div>
                                 <div class="form-group col-4">
                                     <span class="level-label">Race</span>
-                                    <select asp-for="Race" autofocus>
+                                    <select asp-for="Race" class="form-select" autofocus>
                                         <option value="1">Bugbear</option>
                                         <option value="2">Elf</option>
                                     </select>
                                     <span asp-validation-for="Race" class="text-danger"></span>
                                 </div>
-                                <div class="form-group col-3">
+                                <div class="form-group col-2">
                                     <span class="level-label">Speed</span>
-                                    <select asp-for="Speed">
+                                    <select asp-for="Speed" class="form-select">
                                         @for (int i = 20; i <= 50; i += 5)
                                         {
                                             <option value="@i">@i</option>
@@ -68,9 +68,9 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group col-3">
+                                <div class="form-group col-2">
                                     <span class="level-label">Level</span>
-                                    <select asp-for="Level">
+                                    <select asp-for="Level" class="form-select">
                                         @for (int i = 1; i <= 20; i++)
                                         {
                                             <option value="@i">@i</option>

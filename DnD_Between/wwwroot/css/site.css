@@ -114,6 +114,10 @@ a {
     margin-left: calc(var(--bs-gutter-x) * -.5);
 }
 
+.H-16 {
+    height: 160px;
+}
+
 .margin_bot {
     margin-bottom: 5px;
 }
@@ -141,11 +145,11 @@ a {
     text-align: center;
 }
 
-.div3 {
+.proficiencies {
     grid-area: 5 / 1 / 7 / 4;
 }
 
-.div4 {
+.skills {
     grid-area: 1 / 4 / 7 / 7;
 }
 
