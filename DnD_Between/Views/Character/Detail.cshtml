@@ -52,9 +52,9 @@
 <div class="container">
     <div class="character_hero">
         <div class="character_hero-overlay"></div>
-        <div class="character_hero-content">
+        <div class="character_hero-content mt-4">
             <div class="row">
-                <h1 class="col-1 character_avatar">😁</h1>
+                <h2 class="col-1 character_avatar">😁</h2>
                 <h2 class="col-5">@Model.Name</h2>
                 <h3 class="col-2">LVL: @Model.Level</h3>
                 <h3 class="col-2">@Model.Class</h3>
@@ -121,7 +121,7 @@
         </div>
         <div class="col-1">
             <div class="border border-2 border-danger rounded">
-                <h2 class="text-white">0</h2>
+                <h2 class="text-white" style="height: 50px;"></h2>
             </div>
             <span class="inspo_label">INSPIRATION</span>
         </div>
@@ -133,58 +133,58 @@
 
     <div class="subsections">
         <div class="saving-throws">
-            <div class="border border-3 border-danger rounded">
-                <div class="row_1 margin_bot">
+            <div class="border border-3 border-dark rounded">
+                <div class="row_1 margin_bot mt-2 mr-2">
                     <div class="col-6 row_1">
                         <div class="col-8">
-                            strength
+                            Strength
                         </div>
                         <div class="border border-3 border-danger rounded col-4">
-                            +@ConfigureByTable(@Model.Str)
+                            @ConfigureByTable(@Model.Str)
                         </div>
                     </div>
                     <div class="col-6 row_1">
                         <div class="col-8">
-                            strength
+                            Intelligence
                         </div>
                         <div class="border border-3 border-danger rounded col-4">
-                            +@ConfigureByTable(@Model.Str)
-                        </div>
-                    </div>
-                </div>
-                <div class="row_1 margin_bot">
-                    <div class="col-6 row_1">
-                        <div class="col-8">
-                            strength
-                        </div>
-                        <div class="border border-3 border-danger rounded col-4">
-                            +@ConfigureByTable(@Model.Str)
-                        </div>
-                    </div>
-                    <div class="col-6 row_1">
-                        <div class="col-8">
-                            strength
-                        </div>
-                        <div class="border border-3 border-danger rounded col-4">
-                            +@ConfigureByTable(@Model.Str)
+                            @ConfigureByTable(@Model.Int)
                         </div>
                     </div>
                 </div>
-                <div class="row_1 margin_bot">
+                <div class="row_1 margin_bot mr-2">
                     <div class="col-6 row_1">
                         <div class="col-8">
-                            strength
+                            Dexterity
                         </div>
                         <div class="border border-3 border-danger rounded col-4">
-                            +@ConfigureByTable(@Model.Str)
+                            @ConfigureByTable(@Model.Dex)
                         </div>
                     </div>
                     <div class="col-6 row_1">
                         <div class="col-8">
-                            strength
+                            Wisdom
                         </div>
                         <div class="border border-3 border-danger rounded col-4">
-                            +@ConfigureByTable(@Model.Str)
+                            @ConfigureByTable(@Model.Wis)
+                        </div>
+                    </div>
+                </div>
+                <div class="row_1 margin_bot mr-2">
+                    <div class="col-6 row_1">
+                        <div class="col-8">
+                            Constitution
+                        </div>
+                        <div class="border border-3 border-danger rounded col-4">
+                            @ConfigureByTable(@Model.Con)
+                        </div>
+                    </div>
+                    <div class="col-6 row_1">
+                        <div class="col-8">
+                            Charisma
+                        </div>
+                        <div class="border border-3 border-danger rounded col-4">
+                            @ConfigureByTable(@Model.Cha)
                         </div>
                     </div>
                 </div>
@@ -192,32 +192,41 @@
             </div>
         </div>
         <div class="sences">
-            <div class="border border-3 border-danger rounded">
-                <div class="row margin_bot">
+            <div class="border border-3 border-dark rounded">
+                <div class="row margin_bot mt-2">
                     <div class="col-1"></div>
-                    <div class="border border-3 border-danger rounded col-2">
-                        12
+                    <div class="border border-3 border-dark rounded col-2">
+                        @{
+                            int passive_percep = ConfigureByTable(@Model.Wis) + 12;
+                        }
+                        @passive_percep
                     </div>
                     <div class="col-9">
-                        strength
+                        Passive Perception
                     </div>
                 </div>
                 <div class="row margin_bot">
                     <div class="col-1"></div>
-                    <div class="border border-3 border-danger rounded col-2">
-                        12
+                    <div class="border border-3 border-dark rounded col-2">
+                        @{
+                            int passive_invest = ConfigureByTable(@Model.Int) + 10;
+                        }
+                        @passive_invest
                     </div>
                     <div class="col-9">
-                        strength
+                        Passive Investigation
                     </div>
                 </div>
                 <div class="row margin_bot">
                     <div class="col-1"></div>
-                    <div class="border border-3 border-danger rounded col-2">
-                        12
+                    <div class="border border-3 border-dark rounded col-2">
+                        @{
+                            int passive_insight = ConfigureByTable(@Model.Wis) + 10;
+                        }
+                        @passive_insight
                     </div>
                     <div class="col-9">
-                        strength
+                        Passive Insight
                     </div>
                 </div>
                 <span>Sences</span>

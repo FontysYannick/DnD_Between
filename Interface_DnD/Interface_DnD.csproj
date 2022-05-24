@@ -44,10 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\BackgroundDTO.cs" />
     <Compile Include="DTO\CharacterDTO.cs" />
     <Compile Include="DTO\ClassDTO.cs" />
     <Compile Include="DTO\RaceDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="Interface\IBackground.cs" />
     <Compile Include="Interface\ICharacter.cs" />
     <Compile Include="Interface\IClass.cs" />
     <Compile Include="Interface\IRace.cs" />

@@ -3,8 +3,18 @@
 }
 
 <div class="row">
-    <h1 class="col-10">Character</h1>
-    <a class="col-2 btn btn-primary" asp-action="Create"><h2>Create</h2></a>
+    <h1 class="col-6">Character</h1>
+    @{
+        if (Context.Session.GetString("ID") != null)
+        {
+            <div class="col-4"></div>
+            <a class="col-2 btn btn-primary" asp-action="Create"><h2>Create</h2></a>
+        }
+        else
+        {
+            <H2 class="col-6">please login to view Characters</H2>
+        }
+    }
 </div>
 
 <table class="table table-striped">

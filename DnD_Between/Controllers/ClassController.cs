@@ -21,7 +21,6 @@ namespace DnD_Between.Controllers
             }
 
             return View(classViews);
-
         }
     }
 }

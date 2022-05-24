@@ -1,0 +1,39 @@
+﻿@model DnD_Between.Models.FilterViewModel;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Backgrounds</h1>
+
+<div>
+    <hr />
+    <form asp-action="Index">
+        <div class="max-width-class">
+            <select asp-for="Class" class="form-select" onchange="this.form.submit()">
+                <option value="">-Filter-</option>
+                <option value="Barbarian">Barbarian</option>
+                <option value="Bard">Bard</option>
+            </select><br />
+
+            @foreach (BackgroundViewModel backgroundViewModel in Model.BackgroundViewModel)
+            {
+                <div class="Card">
+                    <button type="button" data-bs-toggle="collapse" data-bs-target="#@backgroundViewModel.Name" aria-expanded="true" aria-controls="@backgroundViewModel.Name" class="rounded btn btn-outline-dark">
+                        <div class="card-head" id="headingOne">
+                            <h3 class="mb-0">@backgroundViewModel.Name</h3>
+                        </div>
+                    </button>
+
+                    <div id="@backgroundViewModel.Name" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                        <div class="Card-body">
+                            <p>@backgroundViewModel.Description</p>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            }
+        </div>
+    </form>
+</div>
+

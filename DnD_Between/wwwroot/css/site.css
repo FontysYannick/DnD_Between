@@ -15,6 +15,7 @@ html {
 
 body {
     margin-bottom: 60px;
+    background-color: rgba(0,0,0,.1);
 }
 
 a {
@@ -38,16 +39,15 @@ a {
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 565px;
+    bottom: 960px;
     left: 0;
-    /*background-color: rgba(0,0,0,.6);*/
+    background-color: rgba(0,0,0,.6);
     z-index: -1;
 }
 
 .character_hero-content {
     font-family: Roboto Condensed,Roboto,Helvetica,sans-serif;
     text-align: center;
-    top: 5px;
 }
 
 .character_avatar {
@@ -83,6 +83,27 @@ a {
     justify-content: center;
 }
 
+.Card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 0.25rem;
+}
+
+.Card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+    background-color: rgba(0,0,0,.1);
+}
+
+.card-head {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+}
+
 .row_1 {
     --bs-gutter-x: 0;
     --bs-gutter-y: 0;
@@ -95,6 +116,10 @@ a {
 
 .margin_bot {
     margin-bottom: 5px;
+}
+
+.mr-2 {
+    margin-right: 5px;
 }
 
 .subsections {

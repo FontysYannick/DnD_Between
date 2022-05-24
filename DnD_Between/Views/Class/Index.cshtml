@@ -9,16 +9,16 @@
     <div class="max-width-class">
         @foreach (ClassViewModel classViewModel in @Model)
         {
-            <div class="card">
-                <button type="button" data-bs-toggle="collapse" data-bs-target="#@classViewModel.Name" aria-expanded="true" aria-controls="@classViewModel.Name" style="background-color: @classViewModel.Description">
-                    <div class="card-header" id="headingOne">
+            <div class="Card">
+                <button type="button" data-bs-toggle="collapse" data-bs-target="#@classViewModel.Name" aria-expanded="true" aria-controls="@classViewModel.Name" class="rounded btn btn-outline-dark">
+                    <div class="card-head" id="headingOne">
                         <h3 class="mb-0">@classViewModel.Name</h3>
                     </div>
                 </button>
 
 
                 <div id="@classViewModel.Name" class="collapse" aria-labelledby="heading" data-parent="#accordion">
-                    <div class="card-body">
+                    <div class="Card-body">
                         <p>@classViewModel.Description</p>
                     </div>
                 </div>
