@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stub\BackgroundStub.cs" />
     <Compile Include="Stub\CharacterStub.cs" />
     <Compile Include="Stub\ClassStub.cs" />
     <Compile Include="Stub\RaceStub.cs" />

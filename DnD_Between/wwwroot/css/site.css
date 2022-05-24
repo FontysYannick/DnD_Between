@@ -39,7 +39,7 @@ a {
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 960px;
+    bottom: 83%;
     left: 0;
     background-color: rgba(0,0,0,.6);
     z-index: -1;

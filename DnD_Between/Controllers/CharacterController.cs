@@ -13,10 +13,8 @@ namespace DnD_Between.Controllers
 
         public IActionResult Index()
         {
-
             string? session_ID = HttpContext.Session.GetString("ID");
             List<CharacterViewModel> characterViews = new List<CharacterViewModel>();
-
 
             if (session_ID != null)
             {
@@ -32,8 +30,6 @@ namespace DnD_Between.Controllers
             }
 
             return View(characterViews);
-
-            //return RedirectToAction("Index", "User");
         }
 
         [HttpGet]
