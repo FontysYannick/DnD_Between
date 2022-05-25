@@ -263,8 +263,20 @@
             </div>
         </div>
         <div class="div5"> </div>
-        <div class="div6"> </div>
-        <div class="div7"> </div>
+        <div class="div6">
+            <span class="inspo_label">INITIATIVE</span>
+            <div class="border border-2 border-danger rounded">
+                <h3>@ConfigureByTable(@Model.Dex)</h3>
+            </div>
+        </div>
+        <div class="div7">
+            <div class="border border-3 border-dark rounded-pill">
+                @{
+                    int ac = ConfigureByTable(Model.Dex) + 12;
+                }
+                <H3>@ac</H3>
+            </div>
+        </div>
         <div class="div8"> </div>
     </div>
 </div>
