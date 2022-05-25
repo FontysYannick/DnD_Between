@@ -11,96 +11,145 @@
         <form asp-action="Update">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="max-width">
-                <div class="row">
-                    <div class="form-group col-6">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                <div class="Card">
+                    <button type="button" data-bs-toggle="collapse" data-bs-target="#Name" aria-expanded="true" aria-controls="Name" class="rounded btn btn-outline-secondary text-dark">
+                        <div class="card-head" id="headingOne">
+                            <h3 class="mb-0">Name</h3>
+                        </div>
+                    </button>
+                    <div id="Name" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                        <div class="Card-body">
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="form-group col-4">
+                                    <label asp-for="Name" class="control-label"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-4">
+                                    <span class="level-label">Class</span>
+                                    <select asp-for="Class" class="form-select" autofocus>
+                                        <option value="1">Barbarian</option>
+                                        <option value="2">Bard</option>
+                                        <option value="3">Cleric</option>
+                                        <option value="4">Druid</option>
+                                        <option value="5">Fighter</option>
+                                        <option value="6">Monk</option>
+                                        <option value="7">Paladin</option>
+                                        <option value="8">Ranger</option>
+                                        <option value="9">Rogue</option>
+                                        <option value="10">Sorcerer</option>
+                                        <option value="11">Warlock</option>
+                                        <option value="12">Wizard</option>
+                                    </select>
+                                    <span asp-validation-for="Class" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-2"></div>
-                    <div class="form-group col-2">
-                        <span class="level-label">Speed</span>
-                        <select asp-for="Speed">
-                            @for (int i = 20; i <= 50; i += 5)
-                            {
-                                <option value="@i">@i</option>
-                            }
-                        </select>
-                    </div>
+                </div>
+                <hr />
 
-                    <div class="form-group col-2">
-                        <span class="level-label">Level</span>
-                        <select asp-for="Level">
-                            @for (int i = 1; i <= 20; i++)
-                            {
-                                <option value="@i">@i</option>
-                            }
-                        </select>
+                <div class="Card">
+                    <button type="button" data-bs-toggle="collapse" data-bs-target="#Race" aria-expanded="true" aria-controls="Race" class="rounded btn btn-outline-secondary text-dark">
+                        <div class="card-head" id="headingOne">
+                            <h3 class="mb-0">Race</h3>
+                        </div>
+                    </button>
+                    <div id="Race" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                        <div class="Card-body">
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="form-group col-4">
+                                    <span class="level-label">Race</span>
+                                    <select asp-for="Race" class="form-select" autofocus>
+                                        <option value="1">Dragonborn</option>
+                                        <option value="2">Dwarf</option>
+                                        <option value="3">Elf</option>
+                                        <option value="4">Gnome</option>
+                                        <option value="5">Half-Elf</option>
+                                        <option value="6">Halfling</option>
+                                        <option value="7">Half-Orc</option>
+                                        <option value="8">Human</option>
+                                        <option value="9">Tiefling</option>
+                                    </select>
+                                    <span asp-validation-for="Race" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-2">
+                                    <span class="level-label">Speed</span>
+                                    <select asp-for="Speed" class="form-select">
+                                        @for (int i = 20; i <= 50; i += 5)
+                                        {
+                                            <option value="@i">@i</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-2">
+                                    <span class="level-label">Level</span>
+                                    <select asp-for="Level" class="form-select">
+                                        @for (int i = 1; i <= 20; i++)
+                                        {
+                                            <option value="@i">@i</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <hr />
 
+                <div class="Card">
+                    <button type="button" data-bs-toggle="collapse" data-bs-target="#Stats" aria-expanded="true" aria-controls="Stats" class="rounded btn btn-outline-secondary text-dark">
+                        <div class="card-head" id="headingOne">
+                            <h4 class="mb-0">Stats</h4>
+                        </div>
+                    </button>
+                    <div id="Stats" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                        <div class="Card-body">
+                            <div class="row">
+                                <div class="col-3"></div>
+                                <div class="form-group col-2">
+                                    <span class="create-stat_label">Strength</span>
+                                    <input asp-for="Str" class="form-control" />
+                                    <span asp-validation-for="Str" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-2">
+                                    <span class="create-stat_label">Dexterity</span>
+                                    <input asp-for="Dex" class="form-control" />
+                                    <span asp-validation-for="Dex" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-2">
+                                    <span class="create-stat_label">Constitution</span>
+                                    <input asp-for="Con" class="form-control" />
+                                    <span asp-validation-for="Con" class="text-danger"></span>
+                                </div>
+                            </div>
 
-                <div class="row">
-                    <div class="form-group col-2">
-                        <span class="create-stat_label">Strength</span>
-                        <input asp-for="Str" class="form-control" />
-                        <span asp-validation-for="Str" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-2">
-                        <span class="create-stat_label">Dexterity</span>
-                        <input asp-for="Dex" class="form-control" />
-                        <span asp-validation-for="Dex" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-2">
-                        <span class="create-stat_label">Constitution</span>
-                        <input asp-for="Con" class="form-control" />
-                        <span asp-validation-for="Con" class="text-danger"></span>
+                            <div class="row">
+                                <div class="col-3"></div>
+                                <div class="form-group col-2">
+                                    <span class="create-stat_label">Intelligence</span>
+                                    <input asp-for="Int" class="form-control" />
+                                    <span asp-validation-for="Int" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-2">
+                                    <span class="create-stat_label">Wisdom</span>
+                                    <input asp-for="Wis" class="form-control" />
+                                    <span asp-validation-for="Wis" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-2">
+                                    <span class="create-stat_label">Charisma</span>
+                                    <input asp-for="Cha" class="form-control" />
+                                    <span asp-validation-for="Cha" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-
-                <div class="row">
-                    <div class="form-group col-2">
-                        <span class="create-stat_label">Intelligence</span>
-                        <input asp-for="Int" class="form-control" />
-                        <span asp-validation-for="Int" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-2">
-                        <span class="create-stat_label">Wisdom</span>
-                        <input asp-for="Wis" class="form-control" />
-                        <span asp-validation-for="Wis" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-2">
-                        <span class="create-stat_label">Charisma</span>
-                        <input asp-for="Cha" class="form-control" />
-                        <span asp-validation-for="Cha" class="text-danger"></span>
-                    </div>
-                </div>
-                <hr />
                 <br />
-
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="form-group col-4">
-                        <span class="level-label">Class</span>
-                        <select asp-for="Class" autofocus>
-                            <option value="1">Barbarian</option>
-                            <option value="2">Bard</option>
-                        </select>
-                        <span asp-validation-for="Class" class="text-danger"></span>
-                    </div>
-                    <br />
-
-                    <div class="form-group col-4">
-                        <span class="level-label">Race</span>
-                        <select asp-for="Race" autofocus>
-                            <option value="1">Bugbear</option>
-                            <option value="2">Elf</option>
-                        </select>
-                        <span asp-validation-for="Race" class="text-danger"></span>
-                    </div>
-                </div>
                 <br />
 
                 <div class="form-group">
