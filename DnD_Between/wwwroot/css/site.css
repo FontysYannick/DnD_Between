@@ -114,8 +114,8 @@ a {
     margin-left: calc(var(--bs-gutter-x) * -.5);
 }
 
-.H-16 {
-    height: 160px;
+.H-15 {
+    height: 150px;
 }
 
 .margin_bot {
@@ -137,7 +137,6 @@ a {
 .saving-throws {
     grid-area: 1 / 1 / 3 / 4;
     text-align: center;
-    margin-block: 20px;
     margin-right: 18px;
 }
 
@@ -155,34 +154,37 @@ a {
 
 .skills {
     grid-area: 1 / 4 / 7 / 7;
-    margin-top: 20px;
     text-align: center;
     margin-left: 7px;
     margin-right: 11px;
 }
 
-.div5 {
+.background {
     grid-area: 2 / 7 / 7 / 13;
+    text-align: center;
+    margin-left: 24px;
+    margin-top: 15px;
 }
 
-.div6 {
+.initiative {
     grid-area: 1 / 7 / 2 / 8;
-    margin-top: 20px;
     text-align: center;
     margin-left: 12px;
     margin-right: 12px;
 }
 
-.div7 {
+.armor {
     grid-area: 1 / 8 / 2 / 9;
-    margin-top: 20px;
     text-align: center;
+    margin-top: 10px;
     margin-left: 12px;
     margin-right: 12px;
 }
 
-.div8 {
+.status {
     grid-area: 1 / 9 / 2 / 13;
+    text-align: center;
+    margin-left: 27px;
 }
 
 .collapsible {

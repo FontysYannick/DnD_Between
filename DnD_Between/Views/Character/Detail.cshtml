@@ -147,9 +147,9 @@
         </div>
     </div>
 
-    <div class="subsections">
+    <div class="subsections mt-4">
         <div class="saving-throws">
-            <div class="border border-3 border-dark rounded">
+            <div class="border border-2 border-dark rounded H-15">
                 <div class="row_1 margin_bot mt-2 mr-2">
                     <div class="col-6 row_1">
                         <div class="col-8">
@@ -208,7 +208,7 @@
             </div>
         </div>
         <div class="sences">
-            <div class="border border-3 border-dark rounded H-16">
+            <div class="border border-2 border-dark rounded H-15">
                 <div class="row margin_bot mt-2">
                     <div class="col-1"></div>
                     <div class="border border-3 border-dark rounded col-2">
@@ -249,11 +249,11 @@
             </div>
         </div>
         <div class="proficiencies">
-            <div class="border border-3 border-dark H-16">
+            <div class="border border-2 border-dark H-15">
             </div>
         </div>
         <div class="skills">
-            <div class="border border-3 border-dark rounded">
+            <div class="border border-2 border-dark rounded">
                 @{
                     for (int i = 0; i < 20; i++)
                     {
@@ -262,21 +262,43 @@
                 }
             </div>
         </div>
-        <div class="div5"> </div>
-        <div class="div6">
-            <span class="inspo_label">INITIATIVE</span>
-            <div class="border border-2 border-danger rounded">
-                <h3>@ConfigureByTable(@Model.Dex)</h3>
+        <div class="background">
+            <div class="border border-2 border-dark rounded row" style="height: 386px;">
+                <div class="col-12">
+                    <H4 class="mt-2">Backstory</H4>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <H7>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</H7>
+                </div>
             </div>
         </div>
-        <div class="div7">
+        <div class="initiative">
+            <span class="inspo_label">INITIATIVE</span>
+            <div class="border border-3 border-dark mt-1 rounded">
+                <h3 class="mt-1">@ConfigureByTable(@Model.Dex)</h3>
+            </div>
+        </div>
+        <div class="armor">
             <div class="border border-3 border-dark rounded-pill">
+                <H8 class="mt-3">ARMOR</H8>
                 @{
                     int ac = ConfigureByTable(Model.Dex) + 12;
                 }
-                <H3>@ac</H3>
+                <H3 class="mb-0">@ac</H3>
             </div>
         </div>
-        <div class="div8"> </div>
+        <div class="status">
+            <div class="border border-2 border-dark rounded row">
+                <div class="col-6">
+                    <H6 class="mt-1">DEFENSES</H6>
+                    <H8>Resistances, Immunities, or Vulnerabilities</H8>
+                </div>
+                <div class="col-6">
+                    <H6 class="mt-1">CONDITIONS</H6>
+                    <H8>Active Conditions</H8>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
