@@ -47,6 +47,26 @@
 
         return prof;
     }
+
+    List<string> prof = new List<string>();
+    prof.Add("Acrobatics");
+    prof.Add("Animal Handeling");
+    prof.Add("Arcana");
+    prof.Add("Athletics");
+    prof.Add("Deception");
+    prof.Add("History");
+    prof.Add("Insight");
+    prof.Add("Intimidation");
+    prof.Add("Investigation");
+    prof.Add("Medicine");
+    prof.Add("Nature");
+    prof.Add("Perception");
+    prof.Add("Performance");
+    prof.Add("Persuasion");
+    prof.Add("Religion");
+    prof.Add("Sleight of Hand");
+    prof.Add("Stealth");
+    prof.Add("Survival");
 }
 
 <div class="container">
@@ -149,7 +169,7 @@
 
     <div class="subsections mt-4">
         <div class="saving-throws">
-            <div class="border border-2 border-dark rounded H-15">
+            <div class="border border-2 border-dark rounded H-1">
                 <div class="row_1 margin_bot mt-2 mr-2">
                     <div class="col-6 row_1">
                         <div class="col-8">
@@ -204,11 +224,11 @@
                         </div>
                     </div>
                 </div>
-                <span class="margin_bot">Saving throws</span>
+                <div class="mt-4">Saving throws</div>
             </div>
         </div>
         <div class="sences">
-            <div class="border border-2 border-dark rounded H-15">
+            <div class="border border-2 border-dark rounded H-2">
                 <div class="row margin_bot mt-2">
                     <div class="col-1"></div>
                     <div class="border border-3 border-dark rounded col-2">
@@ -245,25 +265,47 @@
                         Passive Insight
                     </div>
                 </div>
-                <span>Sences</span>
+                <div class="mt-3">Sences</div>
             </div>
         </div>
         <div class="proficiencies">
-            <div class="border border-2 border-dark H-15">
+            <div class="border border-2 border-dark H-2">
+                <div class="border-bottom border-1 border-dark">
+                    <h5>ARMOR</h5>
+                    <h7>leather, Chain mail</h7>
+                </div>
+                <div class="mt-2">
+                    <h5>LANGUAGES</h5>
+                    <h7>Common, Elf, Giant</h7>
+                </div>
+                <div class="mt-2">Proficiencies</div>
             </div>
         </div>
         <div class="skills">
             <div class="border border-2 border-dark rounded">
+                <div class="border-bottom border-1 border-dark row_1">
+                    <div class="col-1"></div>
+                    <div class="col-2">mod</div>
+                    <div class="col-6">skill</div>
+                    <div class="col-2">bonus</div>
+                </div>
                 @{
-                    for (int i = 0; i < 20; i++)
+                    foreach (string s in prof)
                     {
-                        <div>skill @i</div>
+                        <div class="row_1 m">
+                            <div class="col-1"></div>
+                            <div class="col-2">Dex</div>
+                            <div class="col-9 border-bottom border-1 border-dark row_1">
+                                <div class="col-8">@s</div>
+                                <div class="col-4">+2</div>
+                            </div>
+                        </div>
                     }
                 }
             </div>
         </div>
         <div class="background">
-            <div class="border border-2 border-dark rounded row" style="height: 386px;">
+            <div class="border border-2 border-dark rounded row H-3">
                 <div class="col-12">
                     <H4 class="mt-2">Backstory</H4>
                 </div>
@@ -294,7 +336,7 @@
                     <H6 class="mt-1">DEFENSES</H6>
                     <H8>Resistances, Immunities, or Vulnerabilities</H8>
                 </div>
-                <div class="col-6">
+                <div class="border-start border-1 border-dark col-6">
                     <H6 class="mt-1">CONDITIONS</H6>
                     <H8>Active Conditions</H8>
                 </div>
