@@ -10,8 +10,8 @@ namespace DAL_DnD.Context
     {
         public int AddCharacter(CharacterDTO character)
         {
-            string sqlCharacter = "INSERT INTO Character ([name], [User_ID],[strength],[dexterity],[constitution],[intelligence],[wisdom],[charisma],[level],[speed],[class_id],[race_id]) " +
-                "OUTPUT INSERTED.id VALUES (@name, @User_ID,@str,@dex,@con,@intt,@wis,@cha,@level,@speed,@class_id,@race_id)";
+            string sqlCharacter = "INSERT INTO Character ([name], [User_ID],[strength],[dexterity],[constitution],[intelligence],[wisdom],[charisma],[level],[speed],[background_id],[class_id],[race_id]) " +
+                "OUTPUT INSERTED.id VALUES (@name, @User_ID,@str,@dex,@con,@intt,@wis,@cha,@level,@speed,@background_id,@class_id,@race_id)";
             int ID = 1;
 
             using (SqlCommand characterCmd = new SqlCommand(sqlCharacter, Connection()))
@@ -26,6 +26,7 @@ namespace DAL_DnD.Context
                 characterCmd.Parameters.AddWithValue("@cha", character.cha);
                 characterCmd.Parameters.AddWithValue("@level", character.level);
                 characterCmd.Parameters.AddWithValue("@speed", character.speed);
+                characterCmd.Parameters.AddWithValue("@background_id", character.char_back.ID);
                 characterCmd.Parameters.AddWithValue("@class_id", character.char_class.ID);
                 characterCmd.Parameters.AddWithValue("@race_id", character.char_race.ID);
 
@@ -58,6 +59,7 @@ namespace DAL_DnD.Context
                 " [charisma]        = (@cha)," +
                 " [level]           = (@level)," +
                 " [speed]           = (@speed)," +
+                " [background_id]   = (@background_id)," +
                 " [class_id]        = (@class_id)," +
                 " [race_id]         = (@race_id)" +
                 "WHERE id           = (@ID)");
@@ -74,6 +76,7 @@ namespace DAL_DnD.Context
                 characterCmd.Parameters.AddWithValue("@cha", character.cha);
                 characterCmd.Parameters.AddWithValue("@level", character.level);
                 characterCmd.Parameters.AddWithValue("@speed", character.speed);
+                characterCmd.Parameters.AddWithValue("@background_id", character.char_back.ID);
                 characterCmd.Parameters.AddWithValue("@class_id", character.char_class.ID);
                 characterCmd.Parameters.AddWithValue("@race_id", character.char_race.ID);
 
@@ -116,7 +119,11 @@ namespace DAL_DnD.Context
         {
             List<CharacterDTO> CharacterDTOList = new List<CharacterDTO>();
 
-            string query = "SELECT Character.*, Class.class, Race.race FROM Character JOIN Class on Character.class_id = Class.Id JOIN Race on Character.race_id = Race.id WHERE Character.User_ID = 1";
+            string query = "SELECT Character.*, Class.class, Race.race, Background.[Name], Background.[Description]" +
+                " FROM Character" +
+                " JOIN Class on Character.class_id = Class.Id" +
+                " JOIN Race on Character.race_id = Race.id" +
+                " JOIN Background on Character.background_id = Background.id";
             SqlCommand commandDatabase = new SqlCommand(query, Connection());
             commandDatabase.CommandTimeout = 60;
             SqlDataReader reader;
@@ -142,8 +149,9 @@ namespace DAL_DnD.Context
                             cha = reader.GetInt32(8),
                             level = reader.GetInt32(9),
                             speed = reader.GetInt32(10),
-                            char_class = new ClassDTO() { ID = reader.GetInt32(11), name = reader.GetString(13) },
-                            char_race = new RaceDTO() { ID = reader.GetInt32(12), name = reader.GetString(14) }
+                            char_back = new BackgroundDTO() { ID = reader.GetInt32(11), Name = reader.GetString(16), Description = reader.GetString(17) },
+                            char_class = new ClassDTO() { ID = reader.GetInt32(12), name = reader.GetString(14) },
+                            char_race = new RaceDTO() { ID = reader.GetInt32(13), name = reader.GetString(15) }
                         };
                         CharacterDTOList.Add(items);
                     }
@@ -169,7 +177,12 @@ namespace DAL_DnD.Context
         {
             List<CharacterDTO> CharacterDTOList = new List<CharacterDTO>();
 
-            string query = "SELECT Character.*, Class.class, Race.race FROM Character JOIN Class on Character.class_id = Class.Id JOIN Race on Character.race_id = Race.id WHERE Character.User_ID = (@ID)";
+            string query = "SELECT Character.*, Class.class, Race.race, Background.[Name], Background.[Description]" +
+                " FROM Character " +
+                "JOIN Class on Character.class_id = Class.Id " +
+                "JOIN Race on Character.race_id = Race.id " +
+                "JOIN Background on Character.background_id = Background.id " +
+                "WHERE Character.User_ID = (@ID)";
             SqlCommand commandDatabase = new SqlCommand(query, Connection());
             commandDatabase.Parameters.AddWithValue("@ID", ID);
 
@@ -197,8 +210,9 @@ namespace DAL_DnD.Context
                             cha = reader.GetInt32(8),
                             level = reader.GetInt32(9),
                             speed = reader.GetInt32(10),
-                            char_class = new ClassDTO() { ID = reader.GetInt32(11), name = reader.GetString(13) },
-                            char_race = new RaceDTO() { ID = reader.GetInt32(12), name = reader.GetString(14) }
+                            char_back = new BackgroundDTO() { ID = reader.GetInt32(11), Name = reader.GetString(16), Description = reader.GetString(17) },
+                            char_class = new ClassDTO() { ID = reader.GetInt32(12), name = reader.GetString(14) },
+                            char_race = new RaceDTO() { ID = reader.GetInt32(13), name = reader.GetString(15) }
                         };
                         CharacterDTOList.Add(items);
                     }
@@ -223,9 +237,16 @@ namespace DAL_DnD.Context
         public CharacterDTO Getbyid(int id)
         {
             CharacterDTO CharacterDto = new CharacterDTO();
-            string query = "SELECT Character.*, Class.class, Race.race FROM Character JOIN Class on Character.class_id = Class.Id JOIN Race on Character.race_id = Race.id WHERE Character.id = " + id;
+            string query = "SELECT Character.*, Class.class, Race.race, Background.[Name], Background.[Description]" +
+                " FROM Character" +
+                " JOIN Class on Character.class_id = Class.Id" +
+                " JOIN Race on Character.race_id = Race.id" +
+                " JOIN Background on Character.background_id = Background.id" +
+                " WHERE Character.id = (@ID)";
 
             SqlCommand commandDatabase = new SqlCommand(query, Connection());
+            commandDatabase.Parameters.AddWithValue("@ID", id);
+
             commandDatabase.CommandTimeout = 60;
             SqlDataReader reader;
 
@@ -250,8 +271,9 @@ namespace DAL_DnD.Context
                             cha = reader.GetInt32(8),
                             level = reader.GetInt32(9),
                             speed = reader.GetInt32(10),
-                            char_class = new ClassDTO() { ID = reader.GetInt32(11), name = reader.GetString(13) },
-                            char_race = new RaceDTO() { ID = reader.GetInt32(12), name = reader.GetString(14) }
+                            char_back = new BackgroundDTO() { ID = reader.GetInt32(11), Name = reader.GetString(16), Description = reader.GetString(17) },
+                            char_class = new ClassDTO() { ID = reader.GetInt32(12), name = reader.GetString(14) },
+                            char_race = new RaceDTO() { ID = reader.GetInt32(13), name = reader.GetString(15) }
                         };
                     }
                 }

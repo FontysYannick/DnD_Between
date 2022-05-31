@@ -20,6 +20,18 @@ namespace Logic_DnD.Classes
             this.Name = Name;
             this.Description = Description;
         }
+
+        public Background(int ID, string Name, string Description)
+        {
+            this.ID = ID;
+            this.Name = Name;
+            this.Description = Description;
+        }
+
+        public Background(int ID)
+        {
+            this.ID = ID;
+        }
     }
 }
 

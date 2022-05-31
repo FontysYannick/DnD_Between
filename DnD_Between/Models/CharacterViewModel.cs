@@ -25,6 +25,9 @@ namespace DnD_Between.Models
         [Required]
         public int Speed { get; set; }
         [Required]
+        public string Back_name { get; set; }
+        public string Back_Des { get; set; }
+        [Required]
         public string Class { get; set; }
         [Required]
         public string Race { get; set; }
@@ -33,23 +36,6 @@ namespace DnD_Between.Models
         {
 
         }
-
-        public CharacterViewModel(int id, string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, string class_, string race)
-        {
-            this.ID = id;
-            this.Name = name;
-            this.Str = str;
-            this.Dex = dex;
-            this.Con = con;
-            this.Int = intt;
-            this.Wis = wis;
-            this.Cha = cha;
-            this.Level = level;
-            this.Speed = speed;
-            this.Class = class_;
-            this.Race = race;
-        }
-
 
         public CharacterViewModel ToViewModel(Character character)
         {
@@ -64,6 +50,8 @@ namespace DnD_Between.Models
             characterView.Cha = character.cha;
             characterView.Level = character.level;
             characterView.Speed = character.speed;
+            characterView.Back_name = character.char_back.Name;
+            characterView.Back_Des = character.char_back.Description;
             characterView.Class = character.char_class.name;
             characterView.Race = character.char_race.name;
 
@@ -72,9 +60,10 @@ namespace DnD_Between.Models
 
         public Character FromViewModel(CharacterViewModel charview, int User)
         {
+            Background back = new Background(Int32.Parse(charview.Back_name));
             Class clss = new Class(Int32.Parse(charview.Class));
             Race race = new Race(Int32.Parse(charview.Race));
-            Character character = new Character(0, User, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
+            Character character = new Character(0, User, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, back, clss, race);
 
             return character;
         }
