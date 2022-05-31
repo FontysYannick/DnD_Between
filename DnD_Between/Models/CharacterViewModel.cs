@@ -8,7 +8,7 @@ namespace DnD_Between.Models
         public int ID { get; set; }
         [Required, MaxLength(50)]
         public string Name { get; set; }
-        [Range(0,30)]
+        [Range(0, 30)]
         public int Str { get; set; }
         [Required, Range(0, 30)]
         public int Dex { get; set; }
@@ -63,7 +63,7 @@ namespace DnD_Between.Models
             Background back = new Background(Int32.Parse(charview.Back_name));
             Class clss = new Class(Int32.Parse(charview.Class));
             Race race = new Race(Int32.Parse(charview.Race));
-            Character character = new Character(0, User, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, back, clss, race);
+            Character character = new Character(charview.ID, User, charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, back, clss, race);
 
             return character;
         }

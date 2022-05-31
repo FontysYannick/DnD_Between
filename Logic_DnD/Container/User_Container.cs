@@ -1,11 +1,6 @@
 ﻿using Interface_DnD.DTO;
 using Interface_DnD.Interface;
 using Logic_DnD.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logic_DnD.Container
 {
@@ -29,7 +24,7 @@ namespace Logic_DnD.Container
 
         public bool register(User user)
         {
-            UserDTO userDTO = new UserDTO() {Id = user.Id, Username =  user.Username, Password = user.Password};
+            UserDTO userDTO = new UserDTO() { Id = user.Id, Username = user.Username, Password = user.Password };
             return _IUser.Register(userDTO);
         }
     }

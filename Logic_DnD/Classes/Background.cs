@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Logic_DnD.Classes
+﻿namespace Logic_DnD.Classes
 {
     public class Background
     {
@@ -14,7 +8,7 @@ namespace Logic_DnD.Classes
         public string Description { get; private set; }
 
         public Background(int ID, string Class, string Name, string Description)
-        { 
+        {
             this.ID = ID;
             this.Class = Class;
             this.Name = Name;

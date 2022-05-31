@@ -30,7 +30,7 @@ namespace DnD_Between.Controllers
                 }
             }
             filterViewModel.BackgroundViewModel = backgroundViews;
-            
+
             return View(filterViewModel);
 
 

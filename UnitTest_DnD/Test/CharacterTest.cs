@@ -18,12 +18,12 @@ namespace UnitTest_DnD.Test
             Background background = new Background(1);
             Class char_class = new Class(1);
             Race char_race = new Race(1);
-            Character character = new Character(5, 1, "bob", 8, 8, 8, 8, 8, 8, 14, 30,background,char_class,char_race);
+            Character character = new Character(5, 1, "bob", 8, 8, 8, 8, 8, 8, 14, 30, background, char_class, char_race);
 
             Background _background = new Background(2);
             Class character_class = new Class(2);
             Race character_race = new Race(2);
-            Character _character = new Character(6, 2, "Name Is Wrong", 10, 10, 10, 10, 10, 10, 7, 30, _background , character_class, character_race);
+            Character _character = new Character(6, 2, "Name Is Wrong", 10, 10, 10, 10, 10, 10, 7, 30, _background, character_class, character_race);
 
             Character_Container characterContainer = new Character_Container(characterStub);
 

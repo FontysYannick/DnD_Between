@@ -1,10 +1,6 @@
 ﻿using Interface_DnD.DTO;
 using Interface_DnD.Interface;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Stub_DnD.Stub
 {
@@ -71,7 +67,7 @@ namespace Stub_DnD.Stub
             {
                 if (Characterlist[i].ID == character.ID)
                 {
-                     (Characterlist[i]) = character;
+                    (Characterlist[i]) = character;
                 }
             }
         }

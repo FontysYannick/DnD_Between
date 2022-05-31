@@ -7,7 +7,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddMvc();
 builder.Services.AddMemoryCache();
-builder.Services.AddSession(options => {
+builder.Services.AddSession(options =>
+{
     options.IdleTimeout = TimeSpan.FromMinutes(30);
 });
 

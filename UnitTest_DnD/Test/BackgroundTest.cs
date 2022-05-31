@@ -1,9 +1,7 @@
-﻿using Interface_DnD.DTO;
-using Logic_DnD.Classes;
+﻿using Logic_DnD.Classes;
 using Logic_DnD.Container;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stub_DnD.Stub;
-using System;
 using System.Collections.Generic;
 
 namespace UnitTest_DnD.Test

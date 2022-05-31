@@ -1,9 +1,7 @@
-﻿using Interface_DnD.DTO;
-using Logic_DnD.Classes;
+﻿using Logic_DnD.Classes;
 using Logic_DnD.Container;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stub_DnD.Stub;
-using System;
 
 namespace UnitTest_DnD.Test
 {
@@ -17,7 +15,7 @@ namespace UnitTest_DnD.Test
         {
             // Arrange
             User_Container user_Container = new User_Container(userStub);
-            User user = new User( 1, "Yannick", "Test123" );
+            User user = new User(1, "Yannick", "Test123");
 
             // Act
             User tester = user_Container.attemptLogin(user);

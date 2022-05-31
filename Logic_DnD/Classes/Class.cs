@@ -7,7 +7,7 @@
         public string description { get; private set; }
 
         public Class(int ID)
-        { 
+        {
             this.ID = ID;
         }
 

@@ -1,7 +1,4 @@
-﻿using DAL_DnD;
-using Interface_DnD.DTO;
-using Interface_DnD.Interface;
-using System;
+﻿using Interface_DnD.DTO;
 
 namespace Logic_DnD.Classes
 {
@@ -26,7 +23,7 @@ namespace Logic_DnD.Classes
         {
         }
 
-        public Character(int id, int user_id,string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, Background char_back, Class char_class, Race char_race)
+        public Character(int id, int user_id, string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, Background char_back, Class char_class, Race char_race)
         {
             this.ID = id;
             this.user_id = user_id;
