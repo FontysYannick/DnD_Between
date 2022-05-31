@@ -1,4 +1,5 @@
 ﻿using Interface_DnD.DTO;
+using Logic_DnD.Classes;
 using Logic_DnD.Container;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stub_DnD.Stub;
@@ -16,10 +17,10 @@ namespace UnitTest_DnD.Test
         {
             // Arrange
             User_Container user_Container = new User_Container(userStub);
-            UserDTO userDTO = new UserDTO { Id = 1, Username = "Yannick", Password = "Test123" };
+            User user = new User( 1, "Yannick", "Test123" );
 
             // Act
-            UserDTO tester = userStub.AttemptLogin(userDTO);
+            User tester = user_Container.attemptLogin(user);
 
             // Assert
             Assert.AreEqual(1, tester.Id);
@@ -32,13 +33,15 @@ namespace UnitTest_DnD.Test
         {
             // Arrange
             User_Container user_Container = new User_Container(userStub);
-            UserDTO userDTO = new UserDTO { Id = 1, Username = "Yannick", Password = "Test" };
+            User user = new User(1, "Yannick", "test");
 
             // Act
-            UserDTO tester = userStub.AttemptLogin(userDTO);
+            User tester = user_Container.attemptLogin(user);
 
             // Assert
-            Assert.ThrowsException<NullReferenceException>(() => tester.Id);
+            Assert.AreEqual(0, tester.Id);
+            Assert.AreEqual("", tester.Username);
+            Assert.AreEqual("", tester.Password);
         }
 
         [TestMethod]
@@ -46,10 +49,10 @@ namespace UnitTest_DnD.Test
         {
             // Arrange
             User_Container user_Container = new User_Container(userStub);
-            UserDTO user = new UserDTO { Id = 3, Username = "Piet", Password = "Test123" };
+            User user = new User(1, "Piet", "Test123");
 
             // Act
-            bool test = userStub.Register(user);
+            bool test = user_Container.register(user);
 
             // Assert
             Assert.AreEqual(true, test);
@@ -60,10 +63,10 @@ namespace UnitTest_DnD.Test
         {
             // Arrange
             User_Container user_Container = new User_Container(userStub);
-            UserDTO userDTO = new UserDTO { Id = 1, Username = "Yannick", Password = "Test" };
+            User user = new User(1, "Yannick", "Test123");
 
             // Act
-            bool tester = userStub.Register(userDTO);
+            bool tester = user_Container.register(user);
 
             // Assert
             Assert.AreEqual(false, tester);

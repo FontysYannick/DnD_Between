@@ -16,7 +16,7 @@ namespace Stub_DnD.Stub
         {
             this.UserList = new List<UserDTO>()
             {
-                new UserDTO{ Id = 1, Username = "Yannick", Password = "Test123"},
+                new UserDTO{ Id = 1, Username = "Yannick", Password = "Test123" },
                 new UserDTO{ Id = 2, Username = "Billy", Password = "BingBong" },
             };
         }
@@ -33,7 +33,7 @@ namespace Stub_DnD.Stub
                     }
                 }
             }
-            return default;
+            return new UserDTO() { Id = 0, Username = "", Password = "" };
         }
 
         public bool Register(UserDTO userDTO)
