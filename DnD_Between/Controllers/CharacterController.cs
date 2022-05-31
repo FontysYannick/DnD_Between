@@ -20,10 +20,11 @@ namespace DnD_Between.Controllers
             {
                 int myValue = Convert.ToInt32(session_ID);
                 List<Character> characters = Char_Con.Getbyuser(myValue);
+                CharacterViewModel character = new CharacterViewModel();
 
                 foreach (Character item in characters)
                 {
-                    characterViews.Add(new CharacterViewModel(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, item.char_class.name, item.char_race.name));
+                    characterViews.Add(character.ToViewModel(item));
                 }
 
                 return View(characterViews);
@@ -36,9 +37,8 @@ namespace DnD_Between.Controllers
         public IActionResult Detail(int ID)
         {
             Char_ = Char_Con.Getbyid(ID);
-            CharacterViewModel characterViews = new CharacterViewModel(Char_.ID, Char_.name, Char_.str, Char_.dex, Char_.con, Char_.intt, Char_.wis, Char_.cha, Char_.level, Char_.speed, Char_.char_class.name, Char_.char_race.name);
-
-            return View(characterViews);
+            CharacterViewModel character = new CharacterViewModel();
+            return View(character.ToViewModel(Char_));
         }
 
         public IActionResult Create()
@@ -51,12 +51,11 @@ namespace DnD_Between.Controllers
         {
             if (ModelState.IsValid)
             {
-                Class clss = new Class(Int32.Parse(charview.Class));
-                Race race = new Race(Int32.Parse(charview.Race));
-                Char_ = new Character(0, Convert.ToInt32(HttpContext.Session.GetString("ID")),charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
+                CharacterViewModel character = new CharacterViewModel();
+                Char_ = character.FromViewModel(charview, Convert.ToInt32(HttpContext.Session.GetString("ID")));
                 int ID = Char_Con.AddCharacter(Char_);
 
-                return RedirectToAction("Detail", new {id = ID });
+                return RedirectToAction("Detail", new { id = ID });
             }
 
             return View();
@@ -65,9 +64,8 @@ namespace DnD_Between.Controllers
         public IActionResult Update(int ID)
         {
             Char_ = Char_Con.Getbyid(ID);
-            CharacterViewModel characterViews = new CharacterViewModel(Char_.ID, Char_.name, Char_.str, Char_.dex, Char_.con, Char_.intt, Char_.wis, Char_.cha, Char_.level, Char_.speed, Char_.char_class.name, Char_.char_race.name);
-
-            return View(characterViews);
+            CharacterViewModel character = new CharacterViewModel();
+            return View(character.ToViewModel(Char_));
         }
 
         [HttpPost]
@@ -75,12 +73,11 @@ namespace DnD_Between.Controllers
         {
             if (ModelState.IsValid)
             {
-                Class clss = new Class(Int32.Parse(charview.Class));
-                Race race = new Race(Int32.Parse(charview.Race));
-                Character pip = new Character(charview.ID, Convert.ToInt32(HttpContext.Session.GetString("ID")), charview.Name, charview.Str, charview.Dex, charview.Con, charview.Int, charview.Wis, charview.Cha, charview.Level, charview.Speed, clss, race);
-                Char_Con.UpdateCharacter(pip);
+                CharacterViewModel character = new CharacterViewModel();
+                Char_ = character.FromViewModel(charview, Convert.ToInt32(HttpContext.Session.GetString("ID")));
+                Char_Con.UpdateCharacter(Char_);
 
-                return RedirectToAction("Detail", new {id = charview.ID });
+                return RedirectToAction("Detail", new { id = charview.ID });
             }
 
             return View();

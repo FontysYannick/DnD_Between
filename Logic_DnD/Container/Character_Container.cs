@@ -17,16 +17,12 @@ namespace Logic_DnD.Container
 
         public int AddCharacter(Character character)
         {
-            Character character1 = new Character();
-
-            return _Context.AddCharacter(character1.ToDTO(character));
+            return _Context.AddCharacter(character.ToDTO(character));
         }
 
         public void UpdateCharacter(Character character)
         {
-            Character character1 = new Character();
-
-            _Context.UpdateCharacter(character1.ToDTO(character));
+            _Context.UpdateCharacter(character.ToDTO(character));
         }
 
         public void DeleteCharacter(int ID)
@@ -51,7 +47,6 @@ namespace Logic_DnD.Container
         {
             List<Character> list_Character = new List<Character>();
             Character character = new Character();
-
 
             foreach (var item in _Context.Getbyuser(ID))
             {

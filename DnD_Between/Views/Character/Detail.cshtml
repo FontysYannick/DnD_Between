@@ -48,25 +48,27 @@
         return prof;
     }
 
-    List<string> prof = new List<string>();
-    prof.Add("Acrobatics");
-    prof.Add("Animal Handeling");
-    prof.Add("Arcana");
-    prof.Add("Athletics");
-    prof.Add("Deception");
-    prof.Add("History");
-    prof.Add("Insight");
-    prof.Add("Intimidation");
-    prof.Add("Investigation");
-    prof.Add("Medicine");
-    prof.Add("Nature");
-    prof.Add("Perception");
-    prof.Add("Performance");
-    prof.Add("Persuasion");
-    prof.Add("Religion");
-    prof.Add("Sleight of Hand");
-    prof.Add("Stealth");
-    prof.Add("Survival");
+    List<ProficiencieViewModel> prof = new List<ProficiencieViewModel>();
+    {
+        prof.Add(new ProficiencieViewModel() { modifier = "DEX", skill = "Acrobatics", bonus = Model.Dex });
+        prof.Add(new ProficiencieViewModel() { modifier = "WIS", skill = "Animal Handeling", bonus = Model.Wis });
+        prof.Add(new ProficiencieViewModel() { modifier = "INT", skill = "Arcana", bonus = Model.Int });
+        prof.Add(new ProficiencieViewModel() { modifier = "STR", skill = "Athletics", bonus = Model.Str });
+        prof.Add(new ProficiencieViewModel() { modifier = "CHA", skill = "Deception", bonus = Model.Cha });
+        prof.Add(new ProficiencieViewModel() { modifier = "INT", skill = "History", bonus = Model.Int });
+        prof.Add(new ProficiencieViewModel() { modifier = "WIS", skill = "Insight", bonus = Model.Wis });
+        prof.Add(new ProficiencieViewModel() { modifier = "CHA", skill = "Intimidation", bonus = Model.Cha });
+        prof.Add(new ProficiencieViewModel() { modifier = "INT", skill = "Investigation", bonus = Model.Int });
+        prof.Add(new ProficiencieViewModel() { modifier = "WIS", skill = "Medicine", bonus = Model.Wis });
+        prof.Add(new ProficiencieViewModel() { modifier = "INT", skill = "Nature", bonus = Model.Int });
+        prof.Add(new ProficiencieViewModel() { modifier = "WIS", skill = "Perception", bonus = Model.Wis });
+        prof.Add(new ProficiencieViewModel() { modifier = "CHA", skill = "Performance", bonus = Model.Cha });
+        prof.Add(new ProficiencieViewModel() { modifier = "CHA", skill = "Persuasion", bonus = Model.Cha });
+        prof.Add(new ProficiencieViewModel() { modifier = "INT", skill = "Religion", bonus = Model.Int });
+        prof.Add(new ProficiencieViewModel() { modifier = "DEX", skill = "Sleight of Hand", bonus = Model.Dex });
+        prof.Add(new ProficiencieViewModel() { modifier = "DEX", skill = "Stealth", bonus = Model.Dex });
+        prof.Add(new ProficiencieViewModel() { modifier = "WIS", skill = "Survival", bonus = Model.Wis });
+    }
 }
 
 <div class="container">
@@ -283,21 +285,21 @@
         </div>
         <div class="skills">
             <div class="border border-2 border-dark rounded">
-                <div class="border-bottom border-1 border-dark row_1">
+                <div class="border-bottom border-2 border-dark row_1">
                     <div class="col-1"></div>
                     <div class="col-2">mod</div>
                     <div class="col-6">skill</div>
                     <div class="col-2">bonus</div>
                 </div>
                 @{
-                    foreach (string s in prof)
+                    foreach (var p in prof)
                     {
                         <div class="row_1 m">
                             <div class="col-1"></div>
-                            <div class="col-2">Dex</div>
-                            <div class="col-9 border-bottom border-1 border-dark row_1">
-                                <div class="col-8">@s</div>
-                                <div class="col-4">+2</div>
+                            <div class="col-2">@p.modifier</div>
+                            <div class="col-9 border-top border-1 border-dark row_1">
+                                <div class="col-8">@p.skill</div>
+                                <div class="col-4">@ConfigureByTable(@p.bonus)</div>
                             </div>
                         </div>
                     }
