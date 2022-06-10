@@ -54,6 +54,7 @@
     <Compile Include="Test\ClassTest.cs" />
     <Compile Include="Test\RaceTest.cs" />
     <Compile Include="Test\BackgroundTest.cs" />
+    <Compile Include="Test\CalculationTest.cs" />
     <Compile Include="Test\UserTest.cs" />
   </ItemGroup>
   <ItemGroup>

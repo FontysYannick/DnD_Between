@@ -9,8 +9,6 @@ namespace DnD_Between.Controllers
     public class CharacterController : Controller
     {
         Character_Container Char_Con = new Character_Container(new Character_Context());
-        Character Char_ = new Character();
-
         public IActionResult Index()
         {
             string? session_ID = HttpContext.Session.GetString("ID");
@@ -36,7 +34,7 @@ namespace DnD_Between.Controllers
         [HttpGet]
         public IActionResult Detail(int ID)
         {
-            Char_ = Char_Con.Getbyid(ID);
+            Character Char_ = Char_Con.Getbyid(ID);
             CharacterViewModel character = new CharacterViewModel();
             return View(character.ToViewModel(Char_));
         }
@@ -52,7 +50,7 @@ namespace DnD_Between.Controllers
             if (ModelState.IsValid)
             {
                 CharacterViewModel character = new CharacterViewModel();
-                Char_ = character.FromViewModel(charview, Convert.ToInt32(HttpContext.Session.GetString("ID")));
+                Character Char_ = character.FromViewModel(charview, Convert.ToInt32(HttpContext.Session.GetString("ID")));
                 int ID = Char_Con.AddCharacter(Char_);
 
                 return RedirectToAction("Detail", new { id = ID });
@@ -63,7 +61,7 @@ namespace DnD_Between.Controllers
 
         public IActionResult Update(int ID)
         {
-            Char_ = Char_Con.Getbyid(ID);
+            Character Char_ = Char_Con.Getbyid(ID);
             CharacterViewModel character = new CharacterViewModel();
             return View(character.ToViewModel(Char_));
         }
@@ -74,7 +72,7 @@ namespace DnD_Between.Controllers
             if (ModelState.IsValid)
             {
                 CharacterViewModel character = new CharacterViewModel();
-                Char_ = character.FromViewModel(charview, Convert.ToInt32(HttpContext.Session.GetString("ID")));
+                Character Char_ = character.FromViewModel(charview, Convert.ToInt32(HttpContext.Session.GetString("ID")));
                 Char_Con.UpdateCharacter(Char_);
 
                 return RedirectToAction("Detail", new { id = charview.ID });
