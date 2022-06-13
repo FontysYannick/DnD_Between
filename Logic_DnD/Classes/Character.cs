@@ -19,10 +19,6 @@ namespace Logic_DnD.Classes
         public Class char_class { get; private set; }
         public Race char_race { get; private set; }
 
-        public Character()
-        {
-        }
-
         public Character(int id, int user_id, string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, Background char_back, Class char_class, Race char_race)
         {
             this.ID = id;
@@ -65,7 +61,7 @@ namespace Logic_DnD.Classes
             return characterDTO;
         }
 
-        public Character FromDTO(CharacterDTO characterDTO)
+        public Character (CharacterDTO characterDTO)
         {
 
             this.ID = characterDTO.ID;
@@ -83,9 +79,6 @@ namespace Logic_DnD.Classes
             this.char_back = new Background(characterDTO.char_back.ID, characterDTO.char_back.Name, characterDTO.char_back.Description);
             this.char_class = new Class(characterDTO.char_class.ID, characterDTO.char_class.name, characterDTO.char_class.description);
             this.char_race = new Race(characterDTO.char_race.ID, characterDTO.char_race.name);
-
-
-            return this;
         }
     }
 }

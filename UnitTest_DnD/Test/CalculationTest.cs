@@ -13,7 +13,6 @@ namespace UnitTest_DnD.Test
             // Arrange
             Calculations calculation = new Calculations();
 
-
             // Act
             int test1 = calculation.ConfigureByTable(10);
             int test2 = calculation.ConfigureByTable(20);

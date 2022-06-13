@@ -35,8 +35,7 @@ namespace Logic_DnD.Container
 
             foreach (CharacterDTO item in _Context.Getall())
             {
-                Character character = new Character();
-                list_Character.Add(character.FromDTO(item));
+                list_Character.Add(new Character(item));
             }
 
             return list_Character;
@@ -48,8 +47,7 @@ namespace Logic_DnD.Container
 
             foreach (var item in _Context.Getbyuser(ID))
             {
-                Character character = new Character();
-                list_Character.Add(character.FromDTO(item));
+                list_Character.Add(new Character(item));
             }
 
             return list_Character;
@@ -58,9 +56,8 @@ namespace Logic_DnD.Container
         public Character Getbyid(int ID)
         {
             CharacterDTO DTO = _Context.Getbyid(ID);
-            Character character = new Character();
 
-            return character.FromDTO(DTO);
+            return new Character(DTO);
         }
     }
 }
