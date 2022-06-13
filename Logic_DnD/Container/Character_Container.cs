@@ -7,7 +7,7 @@ namespace Logic_DnD.Container
 {
     public class Character_Container
     {
-        ICharacter _Context;
+        readonly ICharacter _Context;
 
         public Character_Container(ICharacter context)
         {
@@ -16,12 +16,12 @@ namespace Logic_DnD.Container
 
         public int AddCharacter(Character character)
         {
-            return _Context.AddCharacter(character.ToDTO(character));
+            return _Context.AddCharacter(character.ToDTO());
         }
 
         public void UpdateCharacter(Character character)
         {
-            _Context.UpdateCharacter(character.ToDTO(character));
+            _Context.UpdateCharacter(character.ToDTO());
         }
 
         public void DeleteCharacter(int ID)
@@ -32,10 +32,10 @@ namespace Logic_DnD.Container
         public List<Character> Getall()
         {
             List<Character> list_Character = new List<Character>();
-            Character character = new Character();
 
             foreach (CharacterDTO item in _Context.Getall())
             {
+                Character character = new Character();
                 list_Character.Add(character.FromDTO(item));
             }
 
@@ -45,10 +45,10 @@ namespace Logic_DnD.Container
         public List<Character> Getbyuser(int ID)
         {
             List<Character> list_Character = new List<Character>();
-            Character character = new Character();
 
             foreach (var item in _Context.Getbyuser(ID))
             {
+                Character character = new Character();
                 list_Character.Add(character.FromDTO(item));
             }
 

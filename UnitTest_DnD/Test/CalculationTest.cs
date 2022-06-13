@@ -33,14 +33,18 @@ namespace UnitTest_DnD.Test
 
 
             // Act
-            int test1 = calculation.ConfigureProf(10);
-            int test2 = calculation.ConfigureProf(20);
-            int test3 = calculation.ConfigureProf(15);
+            int test1 = calculation.ConfigureProf(1);
+            int test2 = calculation.ConfigureProf(6);
+            int test3 = calculation.ConfigureProf(10);
+            int test4 = calculation.ConfigureProf(15);
+            int test5 = calculation.ConfigureProf(20);
 
             // Assert
-            Assert.AreEqual(4, test1);
-            Assert.AreEqual(6, test2);
-            Assert.AreEqual(5, test3);
+            Assert.AreEqual(2, test1);
+            Assert.AreEqual(3, test2);
+            Assert.AreEqual(4, test3);
+            Assert.AreEqual(5, test4);
+            Assert.AreEqual(6, test5);
         }
     }
 }

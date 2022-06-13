@@ -41,48 +41,51 @@ namespace Logic_DnD.Classes
             this.char_race = char_race;
         }
 
-        public CharacterDTO ToDTO(Character character)
+        public CharacterDTO ToDTO()
         {
-            CharacterDTO characterDTO = new CharacterDTO();
-            characterDTO.ID = character.ID;
-            characterDTO.user_id = character.user_id;
-            characterDTO.name = character.name;
-            characterDTO.str = character.str;
-            characterDTO.dex = character.dex;
-            characterDTO.con = character.con;
-            characterDTO.intt = character.intt;
-            characterDTO.wis = character.wis;
-            characterDTO.cha = character.cha;
-            characterDTO.level = character.level;
-            characterDTO.speed = character.speed;
+            CharacterDTO characterDTO = new CharacterDTO
+            {
+                ID = this.ID,
+                user_id = this.user_id,
+                name = this.name,
+                str = this.str,
+                dex = this.dex,
+                con = this.con,
+                intt = this.intt,
+                wis = this.wis,
+                cha = this.cha,
+                level = this.level,
+                speed = this.speed,
 
-            characterDTO.char_back = new BackgroundDTO() { ID = character.char_back.ID };
-            characterDTO.char_class = new ClassDTO() { ID = character.char_class.ID };
-            characterDTO.char_race = new RaceDTO() { ID = character.char_race.ID };
+                char_back = new BackgroundDTO() { ID = this.char_back.ID },
+                char_class = new ClassDTO() { ID = this.char_class.ID },
+                char_race = new RaceDTO() { ID = this.char_race.ID }
+            };
 
             return characterDTO;
         }
 
         public Character FromDTO(CharacterDTO characterDTO)
         {
-            Character character = new Character();
-            character.ID = characterDTO.ID;
-            character.user_id = characterDTO.user_id;
-            character.name = characterDTO.name;
-            character.str = characterDTO.str;
-            character.dex = characterDTO.dex;
-            character.con = characterDTO.con;
-            character.intt = characterDTO.intt;
-            character.wis = characterDTO.wis;
-            character.cha = characterDTO.cha;
-            character.level = characterDTO.level;
-            character.speed = characterDTO.speed;
 
-            character.char_back = new Background(characterDTO.char_back.ID, characterDTO.char_back.Name, characterDTO.char_back.Description);
-            character.char_class = new Class(characterDTO.char_class.ID, characterDTO.char_class.name, characterDTO.char_class.description);
-            character.char_race = new Race(characterDTO.char_race.ID, characterDTO.char_race.name);
+            this.ID = characterDTO.ID;
+            this.user_id = characterDTO.user_id;
+            this.name = characterDTO.name;
+            this.str = characterDTO.str;
+            this.dex = characterDTO.dex;
+            this.con = characterDTO.con;
+            this.intt = characterDTO.intt;
+            this.wis = characterDTO.wis;
+            this.cha = characterDTO.cha;
+            this.level = characterDTO.level;
+            this.speed = characterDTO.speed;
 
-            return character;
+            this.char_back = new Background(characterDTO.char_back.ID, characterDTO.char_back.Name, characterDTO.char_back.Description);
+            this.char_class = new Class(characterDTO.char_class.ID, characterDTO.char_class.name, characterDTO.char_class.description);
+            this.char_race = new Race(characterDTO.char_race.ID, characterDTO.char_race.name);
+
+
+            return this;
         }
     }
 }
